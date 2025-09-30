@@ -1,11 +1,11 @@
-// JavaScript für Icon-Auswahl in Cards
+// JavaScript for icon selection in cards
 (function() {
     const { createElement: el, Fragment } = wp.element;
     const { SelectControl } = wp.components;
     const { useEntityProp } = wp.coreData;
     const { useSelect } = wp.data;
     
-    // Verfügbare Icons (entspricht der PHP-Funktion)
+    // Available icons (matches the PHP function)
     const availableIcons = {
         'star': 'Stern',
         'heart': 'Herz',
@@ -46,7 +46,7 @@
         'bolt': 'Blitz'
     };
     
-    // Optionen für Select-Control erstellen
+    // Create options for Select-Control
     const iconOptions = [
         { label: 'Kein Icon', value: '' },
         ...Object.entries(availableIcons).map(([value, label]) => ({
@@ -55,7 +55,7 @@
         }))
     ];
     
-    // Hook für Meta-Boxen
+    // Hook for meta boxes
     wp.hooks.addFilter(
         'editor.PostFeaturedImage',
         'fev-metzingen/add-icon-controls',

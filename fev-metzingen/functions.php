@@ -1,7 +1,7 @@
 <?php
 if (!defined('ABSPATH')) { exit; }
 // ==========================
-// 1. Theme-Support und Setup
+// 1. Theme support and setup
 // ==========================
 function uikit_theme_setup() {
     add_theme_support('title-tag');
@@ -12,7 +12,7 @@ function uikit_theme_setup() {
     add_theme_support('responsive-embeds');
     add_theme_support('wp-block-styles');
     add_theme_support('align-wide');
-    remove_theme_support('core-block-patterns'); // Entfernt Standard-Block-Patterns
+    remove_theme_support('core-block-patterns'); // Removes default block patterns
     if (!defined('DEFAULT_HERO_BACKGROUND_IMAGE')) {
         define('DEFAULT_HERO_BACKGROUND_IMAGE', get_template_directory_uri() . '/assets/images/default-hero.jpg');
     }
@@ -29,16 +29,16 @@ function fev_asset_version($path_rel){
 }
 
 function uikit_enqueue_assets() {
-    // UIkit (CDN-Versionierung beibehalten oder lokale statische Version)
+    // UIkit (keep CDN versioning or use local static version)
     wp_enqueue_style('uikit-css', get_template_directory_uri() . '/assets/css/uikit.min.css', [], '3.23.11');
     wp_enqueue_script('uikit-js', get_template_directory_uri() . '/assets/js/uikit.min.js', [], '3.23.11', true);
     wp_enqueue_script('uikit-js-icons', get_template_directory_uri() . '/assets/js/uikit-icons.min.js', ['uikit-js'], '3.23.11', true);
 
-    // Theme Haupt-Stylesheet (Version dynamisch)
+    // Theme main stylesheet (dynamic version)
     $style_version = fev_asset_version('/style.css') ?: '1.1';
     wp_enqueue_style('theme-style', get_stylesheet_uri(), [], $style_version);
 
-    // Block Frontend Styles (wenn registriert) – Version dynamisch
+    // Block frontend styles (if registered) – dynamic version
     $cards_css_version = fev_asset_version('/assets/css/fev-cards-block.css') ?: '1.0';
     $section_css_version = fev_asset_version('/assets/css/fev-section-block.css') ?: '1.0';
     wp_register_style('fev-cards-block-frontend', get_template_directory_uri() . '/assets/css/fev-cards-block.css', [], $cards_css_version);
@@ -54,66 +54,66 @@ add_action('wp_enqueue_scripts', 'uikit_enqueue_assets');
 // 3. Customizer
 // ==========================
 function uikit_customizer_settings($wp_customize) {
-    // Einstellung für das Logo
+    // Setting for logo
     $wp_customize->add_setting('custom_logo', [
         'default'           => '',
         'sanitize_callback' => 'esc_url',
     ]);
 
-    // Kontrollfeld für das Logo
+    // Control for logo
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'custom_logo', [
-        'label'    => __('Logo hochladen', 'fev-metzingen'),
+        'label'    => __('Upload logo', 'fev-metzingen'),
         'section'  => 'title_tagline',
         'settings' => 'custom_logo',
     ]));
 
-    // Footer Kontakt Sektion
+    // Footer contact section
     $wp_customize->add_section('footer_contact', [
-        'title'       => __('Footer Kontakt','fev-metzingen'),
+        'title'       => __('Footer contact','fev-metzingen'),
         'priority'    => 160,
-        'description' => __('Adressdaten für den Footer bearbeiten.','fev-metzingen')
+        'description' => __('Edit address data for the footer.','fev-metzingen')
     ]);
 
-    // Organisation
+    // Organization
     $wp_customize->add_setting('footer_org_name', [
         'default'           => 'FeV Metzingen',
         'sanitize_callback' => 'sanitize_text_field',
     ]);
     $wp_customize->add_control('footer_org_name', [
-        'label'   => __('Organisation','fev-metzingen'),
+        'label'   => __('Organization','fev-metzingen'),
         'section' => 'footer_contact',
         'type'    => 'text',
     ]);
 
-    // Straße
+    // Street
     $wp_customize->add_setting('footer_street', [
         'default'           => 'Maurenstraße 13',
         'sanitize_callback' => 'sanitize_text_field',
     ]);
     $wp_customize->add_control('footer_street', [
-        'label'   => __('Straße und Hausnummer','fev-metzingen'),
+        'label'   => __('Street and house number','fev-metzingen'),
         'section' => 'footer_contact',
         'type'    => 'text',
     ]);
 
-    // PLZ
+    // ZIP
     $wp_customize->add_setting('footer_zip', [
         'default'           => '72555',
         'sanitize_callback' => 'sanitize_text_field',
     ]);
     $wp_customize->add_control('footer_zip', [
-        'label'   => __('Postleitzahl','fev-metzingen'),
+        'label'   => __('Postal code','fev-metzingen'),
         'section' => 'footer_contact',
         'type'    => 'text',
     ]);
 
-    // Ort
+    // City
     $wp_customize->add_setting('footer_city', [
         'default'           => 'Metzingen',
         'sanitize_callback' => 'sanitize_text_field',
     ]);
     $wp_customize->add_control('footer_city', [
-        'label'   => __('Ort','fev-metzingen'),
+        'label'   => __('City','fev-metzingen'),
         'section' => 'footer_contact',
         'type'    => 'text',
     ]);
@@ -129,13 +129,13 @@ function uikit_customizer_settings($wp_customize) {
         'type'    => 'email',
     ]);
 
-    // Telefon (optional)
+    // Phone (optional)
     $wp_customize->add_setting('footer_phone', [
         'default'           => '',
         'sanitize_callback' => 'sanitize_text_field',
     ]);
     $wp_customize->add_control('footer_phone', [
-        'label'   => __('Telefon','fev-metzingen'),
+        'label'   => __('Phone','fev-metzingen'),
         'section' => 'footer_contact',
         'type'    => 'text',
         'description' => __('Format: +49 7123 123456','fev-metzingen')
@@ -147,20 +147,20 @@ add_action('customize_register', 'uikit_customizer_settings');
 // 4. Navigation
 // ==========================
 register_nav_menus([
-    'main' => __('Hauptmenü','fev-metzingen'),
-    'footer' => __('Footer Menü','fev-metzingen')
+    'main' => __('Main menu','fev-metzingen'),
+    'footer' => __('Footer menu','fev-metzingen')
 ]);
 
 class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
     public function walk($elements, $max_depth, ...$args) {
-        // Desktop: Dropnav für verschachtelte Menüs
+        // Desktop: Dropnav for nested menus
         $output = '<div class="uk-navbar-center uk-visible@m">';
         $output .= '<ul class="uk-navbar-nav" uk-dropnav="">';
         $output .= $this->render_dropnav($elements, $max_depth);
         $output .= '</ul>';
         $output .= '</div>';
 
-        // Mobile Navigation mit Offcanvas und Accordion
+        // Mobile navigation with offcanvas and accordion
         $output .= '<div class="uk-navbar-right uk-hidden@m">';
         $output .= '<a id="navbar-toggle-icon" class="uk-navbar-toggle uk-navbar-toggle-animate" uk-navbar-toggle-icon uk-toggle="target: #offcanvas-nav" href="#"></a>';
         $output .= '</div>';
@@ -174,7 +174,7 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
         return $output;
     }
 
-    // Desktop: Dropnav-Rendering
+    // Desktop: Dropnav rendering
     private function render_dropnav($elements, $max_depth, $parent_id = 0) {
         $output = '';
         foreach ($elements as $item) {
@@ -207,7 +207,7 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
         return $output;
     }
 
-    // Mobile: Offcanvas mit Accordion
+    // Mobile: Offcanvas with accordion
     private function render_offcanvas($elements, $max_depth, $parent_id = 0) {
         $output = '';
         foreach ($elements as $item) {
@@ -224,7 +224,7 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
                 if ($has_children) {
                     $output .= '<a' . $attributes . ' class="uk-flex uk-flex-middle">';
                     $output .= '<span>' . esc_html($item->title) . '</span>';
-                    $output .= '<button class="uk-dropnav-toggle uk-button-link" type="button" aria-label="Untermenü öffnen" aria-expanded="false" uk-toggle="target: #offcanvas-sub-' . $item->ID . '" tabindex="0" style="background:none;border:none;padding:4px;cursor:pointer;color:inherit;margin-left:8px;">';
+                    $output .= '<button class="uk-dropnav-toggle uk-button-link" type="button" aria-label="Open submenu" aria-expanded="false" uk-toggle="target: #offcanvas-sub-' . $item->ID . '" tabindex="0" style="background:none;border:none;padding:4px;cursor:pointer;color:inherit;margin-left:8px;">';
                     $output .= '<span uk-drop-parent-icon class="uk-drop-parent-icon-offcanvas"></span>';
                     $output .= '</button>';
                     $output .= '</a>';
@@ -240,7 +240,7 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
         return $output;
     }
 
-    // Hilfsfunktion: Prüft, ob ein Menüpunkt Kinder hat
+    // Helper function: Checks if a menu item has children
     private function has_children($elements, $id) {
         foreach ($elements as $item) {
             if ((int)$item->menu_item_parent === (int)$id) {
@@ -250,16 +250,16 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
         return false;
     }
 
-    // Die Standard-Methoden werden nicht mehr benötigt, da alles über die eigenen Render-Methoden läuft
+    // The default methods are no longer needed, as everything runs via custom render methods
 }
 
 // ==========================
-// 5. Meta-Boxen (Sicherheitsverbessert)
+// 5. Meta boxes (improved security)
 // ==========================
 function add_hero_background_meta_box() {
     add_meta_box(
         'hero_content_meta_box',
-        'Hero Inhalte',
+        'Hero content',
         'render_hero_content_meta_box',
         'page',
         'side',
@@ -269,54 +269,54 @@ function add_hero_background_meta_box() {
 add_action('add_meta_boxes', 'add_hero_background_meta_box');
 
 function render_hero_content_meta_box($post) {
-    // Sicherheit: Nonce-Field hinzufügen
+    // Security: Add nonce field
     wp_nonce_field('hero_content_nonce', 'hero_content_nonce_field');
     
     $hero_title = get_post_meta($post->ID, '_hero_title', true);
     $hero_description = get_post_meta($post->ID, '_hero_description', true);
     ?>
     <div>
-        <p><strong>Hinweis:</strong> Verwenden Sie "Beitragsbild festlegen" für das Hero-Hintergrundbild.</p>
+        <p><strong>Note:</strong> Use "Set featured image" for the hero background image.</p>
         
-        <p><label for="hero_title"><strong>Hero Titel:</strong></label></p>
+        <p><label for="hero_title"><strong>Hero title:</strong></label></p>
         <input type="text" name="hero_title" id="hero_title" 
                value="<?php echo esc_attr($hero_title); ?>" style="width:100%;" 
-               placeholder="Leer lassen für Standard-Titel" />
+               placeholder="Leave empty for default title" />
         
-        <p><label for="hero_description"><strong>Hero Beschreibung:</strong></label></p>
+        <p><label for="hero_description"><strong>Hero description:</strong></label></p>
         <input type="text" name="hero_description" id="hero_description" 
                value="<?php echo esc_attr($hero_description); ?>" style="width:100%;" 
-               placeholder="Hero Untertitel" />
+               placeholder="Hero subtitle" />
     </div>
     <?php
 }
 
 function save_hero_content_meta($post_id) {
-    // Sicherheitsprüfungen
+    // Security checks
     
-    // 1. Nonce-Verification
+    // 1. Nonce verification
     if (!isset($_POST['hero_content_nonce_field']) || 
         !wp_verify_nonce($_POST['hero_content_nonce_field'], 'hero_content_nonce')) {
         return;
     }
     
-    // 2. Autosave-Schutz
+    // 2. Autosave protection
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
     }
     
-    // 3. Berechtigungsprüfung
+    // 3. Permission check
     if (!current_user_can('edit_page', $post_id)) {
         return;
     }
     
-    // 4. Hero Titel speichern
+    // 4. Save hero title
     if (array_key_exists('hero_title', $_POST)) {
         $hero_title = sanitize_text_field($_POST['hero_title']);
         update_post_meta($post_id, '_hero_title', $hero_title);
     }
     
-    // 5. Hero Beschreibung speichern
+    // 5. Save hero description
     if (array_key_exists('hero_description', $_POST)) {
         $hero_description = sanitize_text_field($_POST['hero_description']);
         update_post_meta($post_id, '_hero_description', $hero_description);
@@ -325,19 +325,19 @@ function save_hero_content_meta($post_id) {
 add_action('save_post', 'save_hero_content_meta');
 
 // ==========================
-// Hero Helper Funktionen
+// Hero helper functions
 // ==========================
 function get_hero_background_image($post_id = null) {
     if (!$post_id) {
         $post_id = get_the_ID();
     }
     
-    // Featured Image holen
+    // Get featured image
     if (has_post_thumbnail($post_id)) {
         return get_the_post_thumbnail_url($post_id, 'full');
     }
     
-    return DEFAULT_HERO_BACKGROUND_IMAGE; // Fallback auf Standard-Hintergrundbild
+    return DEFAULT_HERO_BACKGROUND_IMAGE; // Fallback to default background image
 }
 
 function get_hero_title($post_id = null) {
@@ -347,7 +347,7 @@ function get_hero_title($post_id = null) {
     
     $hero_title = get_post_meta($post_id, '_hero_title', true);
     
-    // Fallback auf Standard-Titel wenn Hero-Titel leer ist
+    // Fallback to default title if hero title is empty
     return !empty($hero_title) ? $hero_title : get_the_title($post_id);
 }
 
@@ -360,7 +360,7 @@ function get_hero_description($post_id = null) {
 }
 
 // ==========================
-// 6. Block-Patterns (Korrigierte Funktionsnamen)
+// 6. Block patterns (corrected function names)
 // ==========================
 function uikit_register_block_patterns_categories() {
     register_block_pattern_category('fev-metzingen', ['label' => 'FEV Metzingen']);
@@ -375,8 +375,8 @@ function uikit_register_block_patterns() {
         register_block_pattern(
             'fev-metzingen/three-cards',
             [
-                'title'       => __('Dreispaltiges Layout', 'fev-metzingen'),
-                'description' => __('Ein einfaches dreispaltiges Layout mit Überschriften und Text.', 'fev-metzingen'),
+                'title'       => __('Three-column layout', 'fev-metzingen'),
+                'description' => __('A simple three-column layout with headings and text.', 'fev-metzingen'),
                 'categories'  => ['layout'],
                 'content'     => file_get_contents($pattern_file),
             ]
@@ -386,31 +386,31 @@ function uikit_register_block_patterns() {
 add_action('init', 'uikit_register_block_patterns', 10);
 
 // ==========================
-// 7. Sicherheits-Funktionen
+// 7. Security functions
 // ==========================
-// Entfernt WordPress-Version aus Head für bessere Sicherheit
+// Removes WordPress version from head for better security
 remove_action('wp_head', 'wp_generator');
 
-// Verhindert Datei-Editierung im Admin-Bereich
+// Prevents file editing in the admin area
 if (!defined('DISALLOW_FILE_EDIT')) {
     define('DISALLOW_FILE_EDIT', true);
 }
 
-// Sicherheitsfunktion: Sanitize file uploads (verbessert)
+// Security function: Sanitize file uploads (improved)
 function secure_file_upload($file){
-    // Nur bei erfolgreichem Upload prüfen
+    // Only check on successful upload
     if(isset($file['tmp_name']) && is_uploaded_file($file['tmp_name'])){
         $filetype = wp_check_filetype_and_ext($file['tmp_name'],$file['name']);
         $allowed = ['jpg','jpeg','jpe','png','gif','webp'];
         if(empty($filetype['ext']) || !in_array(strtolower($filetype['ext']), $allowed, true)){
-            $file['error'] = __('Dateityp nicht erlaubt. Erlaubt: jpg, jpeg, png, gif, webp','fev-metzingen');
+            $file['error'] = __('File type not allowed. Allowed: jpg, jpeg, png, gif, webp','fev-metzingen');
         }
     }
     return $file;
 }
 add_filter('wp_handle_upload_prefilter', 'secure_file_upload');
 
-// Content Security / Security Headers (modernisiert)
+// Content Security / Security Headers (modernized)
 function add_security_headers() {
     if (!is_admin()) {
         header('X-Content-Type-Options: nosniff');
@@ -420,13 +420,13 @@ function add_security_headers() {
         if (is_ssl()) {
             header('Strict-Transport-Security: max-age=31536000; includeSubDomains; preload');
         }
-        // Optionale Content-Security-Policy kann projektspezifisch ergänzt werden.
+        // Optional Content-Security-Policy can be added project-specific.
     }
 }
 add_action('send_headers', 'add_security_headers');
 
 // ==========================
-// 5. Custom Fields für Icons (nur für Gutenberg-Block)
+// 5. Custom fields for icons (only for Gutenberg block)
 // ==========================
 function register_fev_cards_block() {
     wp_register_script(
@@ -495,7 +495,7 @@ function register_fev_cards_block() {
 }
 add_action('init', 'register_fev_cards_block');
 
-// Render-Funktion für den Block
+// Render function for the block
 function render_fev_cards_block($attributes, $content) {
     $card1Icon = isset($attributes['card1Icon']) ? esc_attr($attributes['card1Icon']) : '';
     $card1Url = isset($attributes['card1Url']) ? esc_url($attributes['card1Url']) : '';
@@ -504,7 +504,7 @@ function render_fev_cards_block($attributes, $content) {
     $card3Icon = isset($attributes['card3Icon']) ? esc_attr($attributes['card3Icon']) : '';
     $card3Url = isset($attributes['card3Url']) ? esc_url($attributes['card3Url']) : '';
 
-    // Einfache Lösung: Content direkt verwenden und Icons per CSS/JS hinzufügen
+    // Simple solution: Use content directly and add icons via CSS/JS
     $output = "<div class='fev-cards-block uk-width-4-5@m uk-margin-auto uk-margin-large-top' ";
     $output .= "data-card1-icon='{$card1Icon}' data-card1-url='{$card1Url}' ";
     $output .= "data-card2-icon='{$card2Icon}' data-card2-url='{$card2Url}' ";

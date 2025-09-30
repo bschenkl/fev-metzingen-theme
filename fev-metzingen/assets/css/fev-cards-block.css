@@ -1,4 +1,4 @@
-/* CSS für den FeV Cards Block im Frontend */
+/* CSS for the FeV Cards Block in the frontend */
 
 .fev-cards-block {
     width: 80%;
@@ -42,7 +42,7 @@
     color: #666;
 }
 
-/* Card Link - gesamte Card klickbar machen */
+/* Card Link - make entire card clickable */
 .fev-cards-block .fev-card-link {
     display: block;
     text-decoration: none;
@@ -51,7 +51,7 @@
     padding: 0 !important;
 }
 
-/* Card Content Wrapper - zentriert alle Inhalte */
+/* Card Content Wrapper - centers all content */
 .fev-cards-block .fev-card-content {
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@
     padding: 0 !important;
 }
 
-/* Spezifische Zentrierung für Block-Elemente */
+/* Specific centering for block elements */
 .fev-cards-block .fev-card-content > h3,
 .fev-cards-block .fev-card-content > .wp-block-image,
 .fev-cards-block .fev-card-content > figure,
@@ -71,7 +71,7 @@
     text-align: center;
 }
 
-/* Paragraphen linksbündig */
+/* Paragraphs left-aligned */
 .fev-cards-block .fev-card-content > p {
     text-align: left;
     width: 100%;

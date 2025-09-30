@@ -11,7 +11,7 @@ $hero_subtitle = $args['hero_subtitle'] ?? '';
 $hero_background_image = $args['hero_background_image'] ?? '';
 $style = $hero_background_image ? "style=\"background-image: url('$hero_background_image');\"" : '';
 if (!$hero_title) {
-    $hero_title = get_bloginfo('name'); // Fallback auf den Seitentitel
+    $hero_title = get_bloginfo('name'); // Fallback to site title
 }
 ?>
 <section id="hero" class="uk-position-relative uk-height-large uk-background-cover uk-background-center-center" <?php echo $style; ?>>

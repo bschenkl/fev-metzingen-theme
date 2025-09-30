@@ -1,4 +1,4 @@
-/* CSS für den FeV Cards Block im Block-Editor */
+/* CSS for the FeV Cards Block in the block editor */
 
 .fev-cards-block-editor {
     border: 2px dashed #ddd;
@@ -41,7 +41,7 @@
     line-height: 1.5;
 }
 
-/* Panel-Styling im Inspector */
+/* Panel styling in the inspector */
 .components-panel__body .components-base-control {
     margin-bottom: 15px;
 }

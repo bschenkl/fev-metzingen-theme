@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add UIkit card classes to column
         column.classList.add('uk-card', 'uk-card-default', 'uk-card-body');
 
-        // Sammle alle Kinder-Elemente
+        // Collect all child elements
         const children = Array.from(column.children);
 
         // Add icon if specified
@@ -41,15 +41,15 @@ document.addEventListener('DOMContentLoaded', function() {
             iconSpan.className = 'uk-text-emphasis';
 
             iconContainer.appendChild(iconSpan);
-            children.unshift(iconContainer); // Icon am Anfang hinzufügen
+            children.unshift(iconContainer); // Add icon at the beginning
         }
 
-        // Leere die Spalte
+        // Empty the column
         column.innerHTML = '';
 
-        // Erstelle die korrekte Struktur
+        // Build the correct structure
         if (url && url !== '') {
-            // Mit Link: .uk-card > .fev-card-link > .fev-card-content
+            // With link: .uk-card > .fev-card-link > .fev-card-content
             const link = document.createElement('a');
             link.href = url;
             link.className = 'fev-card-link';
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
             link.appendChild(contentWrapper);
             column.appendChild(link);
         } else {
-            // Ohne Link: .uk-card > .fev-card-content
+            // Without link: .uk-card > .fev-card-content
             const contentWrapper = document.createElement('div');
             contentWrapper.className = 'fev-card-content';
 

@@ -2,7 +2,7 @@
 Theme Name: FeV Metzingen Theme
 Theme URI: https://example.com/fev-metzingen
 Author: Benjamin Schenkl
-Description: Ein modulares, WordPress Theme auf Basis von UIkit.
+Description: A modular WordPress theme based on UIkit.
 Version: 1.1.1
 Text Domain: fev-metzingen
 Requires at least: 6.0
@@ -13,7 +13,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 /* ==========================================================================
-   Custom Properties für Theme-spezifische Werte (UIKit ergänzend)
+   Custom Properties for Theme-specific Values (UIKit complementary)
    ========================================================================== */
 :root {
     --theme-primary: #ff5722;
@@ -30,7 +30,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 }
 
 /* ==========================================================================
-   Hero Section (UIKit ergänzend - spezifische z-index Steuerung)
+   Hero Section (UIKit complementary - specific z-index control)
    ========================================================================== */
 #hero {
     z-index: 1;
@@ -42,21 +42,21 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 }
 
 /* ==========================================================================
-   Header Navigation (UIKit Override - spezifische Positionierung)
+   Header Navigation (UIKit Override - specific positioning)
    ========================================================================== */
 header {
     z-index: 10;
     position: fixed;
-    /* margin-top wird jetzt über UIKit-Klassen im Template gesteuert */
+    /* margin-top is now controlled via UIKit classes in the template */
     transition: all 0.3s ease;
 }
 
-/* Custom Header Offset für größere Abstände */
+/* Custom Header Offset for larger spacing */
 header.uk-margin-top {
     margin-top: var(--theme-header-offset) !important;
 }
 
-/* Navigation Link States (UIKit ergänzend) */
+/* Navigation Link States (UIKit complementary) */
 .uk-navbar-nav .current-menu-item > a {
     color: var(--theme-primary) !important;
     font-weight: bold;
@@ -78,9 +78,9 @@ header.uk-margin-top {
     color: var(--theme-nav-active) !important;
 }
 /* ==========================================================================
-   Navbar Dropdowns (UIKit Override - spezifische Dropdown-Stile)
+   Navbar Dropdowns (UIKit Override - specific dropdown styles)
    ========================================================================== */
-/* Transparentes Dropdown */
+/* Transparent Dropdown */
 .uk-dropdown {
     background: rgba(0,0,0,0); /* oder var(--theme-overlay) */
     border: none;
@@ -90,7 +90,7 @@ header.uk-margin-top {
     top: 60px !important; /* Abstand zum Header */
 }
 
-/* Dropdown-Links wie Navbar */
+/* Dropdown Links like Navbar */
 .uk-dropdown-nav > li > a {
     color: var(--theme-nav-default) !important;
     font-size: 1rem;
@@ -98,7 +98,7 @@ header.uk-margin-top {
     transition: color 0.3s ease;
 }
 
-/* Active- und Hover-State wie Navbar */
+/* Active and Hover State like Navbar */
 .uk-dropdown-nav > li.uk-active > a,
 .uk-dropdown-nav > li.current-menu-item > a {
     color: var(--theme-nav-active) !important;
@@ -107,7 +107,7 @@ header.uk-margin-top {
 .uk-dropdown-nav > li > a:hover {
     color: var(--theme-nav-active) !important;
 }
-/* Dropdown-Links Hover-Effekt */
+/* Dropdown Links Hover Effect */
 #navbar-toggle-icon {
     color: var(--theme-nav-active) !important;
     margin-right: 20px;
@@ -127,7 +127,7 @@ header.uk-margin-top {
     color: white !important;
 }
 /* ==========================================================================
-   Logo Styling (Theme-spezifisch)
+   Logo Styling (Theme-specific)
    ========================================================================== */
 #logo {
     width: auto;
@@ -141,12 +141,12 @@ header.uk-margin-top {
 }
 
 /* ==========================================================================
-   Footer Styling (UIKit ergänzend)
+   Footer Styling (UIKit complementary)
    ========================================================================== */
-/* Footer-Abstände reduzieren */
+/* Reduce Footer spacing */
 footer.uk-section {
-    padding-top: 40px;    /* Weniger Abstand oben */
-    padding-bottom: 40px; /* Weniger Abstand unten */
+    padding-top: 40px;    /* Less spacing on top */
+    padding-bottom: 40px; /* Less spacing on bottom */
     background-color: var(--theme-footer-bg) !important;
 }
 
@@ -161,7 +161,7 @@ footer p {
     color: var(--theme-footer-text) !important;
 }
 
-/* Footer-Menü: Abstände entfernen */
+/* Footer Menu: Remove spacing */
 footer .footer-nav,
 footer .footer-nav .uk-nav {
     margin: 0 !important;
@@ -178,15 +178,15 @@ footer .footer-nav .uk-nav > li > a {
 
 
 /* ==========================================================================
-   Responsive Logo & Header Adjustments (UIKit-Klassen werden im HTML verwendet)
-   Hinweis: Verwenden Sie im Template diese UIKit-Klassen:
-   - uk-margin-left@s, uk-margin-left@m für responsive margins
-   - uk-height-small@s, uk-height-medium@m für responsive heights
-   - uk-visible@s, uk-hidden@s für responsive visibility
+   Responsive Logo & Header Adjustments (UIKit classes are used in HTML)
+   Note: Use these UIKit classes in the template:
+   - uk-margin-left@s, uk-margin-left@m for responsive margins
+   - uk-height-small@s, uk-height-medium@m for responsive heights
+   - uk-visible@s, uk-hidden@s for responsive visibility
    ========================================================================== */
 
 /* ==========================================================================
-   Accessibility & Performance (UIKit ergänzend)
+   Accessibility & Performance (UIKit complementary)
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
     header,
@@ -196,7 +196,7 @@ footer .footer-nav .uk-nav > li > a {
     }
 }
 
-/* Skip Link für bessere Accessibility */
+/* Skip Link for better Accessibility */
 .skip-link {
     position: absolute;
     top: -40px;
@@ -215,7 +215,7 @@ footer .footer-nav .uk-nav > li > a {
 }
 
 /* ==========================================================================
-   Card Icons (UIKit ergänzend)
+   Card Icons (UIKit complementary)
    ========================================================================== */
 .card-icon-container {
     text-align: center;
@@ -228,7 +228,7 @@ footer .footer-nav .uk-nav > li > a {
 }
 
 .uk-card:hover .card-icon-container span[uk-icon] {
-    color: #e64a19; /* Dunklere Variante von theme-primary beim Hover */
+    color: #e64a19; /* Darker variant of theme-primary on hover */
 }
 
 /* Block Editor Icon Controls */
@@ -251,7 +251,7 @@ footer .footer-nav .uk-nav > li > a {
     width: 100vw;
     margin-left: 50%;
     transform: translateX(-50%);
-    background: #f0f0f0; /* helles Grau */
+    background: #f0f0f0; /* light gray */
     padding: 40px 0;
 }
 
