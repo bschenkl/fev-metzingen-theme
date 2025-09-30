@@ -1,0 +1,14 @@
+/* Editor styles for FeV Section Block */
+.fev-section-block {
+    border: 1px dashed #ddd;
+    padding: 20px;
+    background: #fff;
+}
+
+.fev-section-grey {
+    background: #f0f0f0;
+}
+
+.fev-section-white {
+    background: #ffffff;
+}

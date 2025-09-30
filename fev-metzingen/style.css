@@ -1,0 +1,276 @@
+/*
+Theme Name: FeV Metzingen Theme
+Theme URI: https://example.com/fev-metzingen
+Author: Benjamin Schenkl
+Description: Ein modulares, barriereoptimiertes WordPress Theme auf Basis von UIkit.
+Version: 1.1.1
+Text Domain: fev-metzingen
+Requires at least: 6.0
+Tested up to: 6.6
+Requires PHP: 7.4
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/* ==========================================================================
+   Custom Properties für Theme-spezifische Werte (UIKit ergänzend)
+   ========================================================================== */
+:root {
+    --theme-primary: #ff5722;
+    --theme-primary-hover: #e64a19;
+    --theme-secondary: #37474f;
+    --theme-nav-active: #ffffff;
+    --theme-nav-default: #e0e0e0;
+    --theme-footer-bg: #333333;
+    --theme-footer-text: #cccccc;
+    --theme-overlay: rgba(0, 0, 0, 0.3);
+    --theme-header-offset: 60px;
+    --theme-logo-height: 100px;
+    --theme-logo-margin: 100px;
+}
+
+/* ==========================================================================
+   Hero Section (UIKit ergänzend - spezifische z-index Steuerung)
+   ========================================================================== */
+#hero {
+    z-index: 1;
+    position: relative;
+}
+
+.hero-overlay {
+    background-color: var(--theme-overlay);
+}
+
+/* ==========================================================================
+   Header Navigation (UIKit Override - spezifische Positionierung)
+   ========================================================================== */
+header {
+    z-index: 10;
+    position: fixed;
+    /* margin-top wird jetzt über UIKit-Klassen im Template gesteuert */
+    transition: all 0.3s ease;
+}
+
+/* Custom Header Offset für größere Abstände */
+header.uk-margin-top {
+    margin-top: var(--theme-header-offset) !important;
+}
+
+/* Navigation Link States (UIKit ergänzend) */
+.uk-navbar-nav .current-menu-item > a {
+    color: var(--theme-primary) !important;
+    font-weight: bold;
+}
+
+.uk-navbar-nav > li.uk-active > a {
+    font-weight: bold;
+    color: var(--theme-nav-active) !important;
+}
+
+.uk-navbar-nav > li > a {
+    color: var(--theme-nav-default) !important;
+    font-size: 1.1rem;
+    font-weight: normal;
+    transition: color 0.3s ease;
+}
+
+.uk-navbar-nav > li > a:hover {
+    color: var(--theme-nav-active) !important;
+}
+/* ==========================================================================
+   Navbar Dropdowns (UIKit Override - spezifische Dropdown-Stile)
+   ========================================================================== */
+/* Transparentes Dropdown */
+.uk-dropdown {
+    background: rgba(0,0,0,0); /* oder var(--theme-overlay) */
+    border: none;
+    box-shadow: none;
+    padding-top: 0;
+    padding-left: 10px;
+    top: 60px !important; /* Abstand zum Header */
+}
+
+/* Dropdown-Links wie Navbar */
+.uk-dropdown-nav > li > a {
+    color: var(--theme-nav-default) !important;
+    font-size: 1rem;
+    font-weight: normal;
+    transition: color 0.3s ease;
+}
+
+/* Active- und Hover-State wie Navbar */
+.uk-dropdown-nav > li.uk-active > a,
+.uk-dropdown-nav > li.current-menu-item > a {
+    color: var(--theme-nav-active) !important;
+    font-weight: bold;
+}
+.uk-dropdown-nav > li > a:hover {
+    color: var(--theme-nav-active) !important;
+}
+/* Dropdown-Links Hover-Effekt */
+#navbar-toggle-icon {
+    color: var(--theme-nav-active) !important;
+    margin-right: 20px;
+    scale: 2;
+    display: flex;
+    font-weight: normal;
+    transition: color 0.3s ease;
+}
+#navbar-toggle-icon:hover {
+    color: var(--theme-nav-default) !important;
+}
+.uk-dropnav-toggle-animate {
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    transform: rotate(180deg);
+}
+.uk-drop-parent-icon-offcanvas {
+    color: white !important;
+}
+/* ==========================================================================
+   Logo Styling (Theme-spezifisch)
+   ========================================================================== */
+#logo {
+    width: auto;
+    height: var(--theme-logo-height);
+    margin-left: var(--theme-logo-margin);
+    transition: transform 0.3s ease;
+}
+
+#logo:hover {
+    transform: scale(1.05);
+}
+
+/* ==========================================================================
+   Footer Styling (UIKit ergänzend)
+   ========================================================================== */
+/* Footer-Abstände reduzieren */
+footer.uk-section {
+    padding-top: 40px;    /* Weniger Abstand oben */
+    padding-bottom: 40px; /* Weniger Abstand unten */
+    background-color: var(--theme-footer-bg) !important;
+}
+
+footer a {
+    color: var(--theme-footer-text) !important;
+}
+footer a:hover {
+    color: var(--theme-nav-active) !important;
+}
+
+footer p {
+    color: var(--theme-footer-text) !important;
+}
+
+
+/* ==========================================================================
+   Responsive Logo & Header Adjustments (UIKit-Klassen werden im HTML verwendet)
+   Hinweis: Verwenden Sie im Template diese UIKit-Klassen:
+   - uk-margin-left@s, uk-margin-left@m für responsive margins
+   - uk-height-small@s, uk-height-medium@m für responsive heights
+   - uk-visible@s, uk-hidden@s für responsive visibility
+   ========================================================================== */
+
+/* ==========================================================================
+   Accessibility & Performance (UIKit ergänzend)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+    header,
+    #logo,
+    .uk-navbar-nav > li > a {
+        transition: none;
+    }
+}
+
+/* Skip Link für bessere Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    z-index: 999999;
+    background: var(--theme-primary);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 3px;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* ==========================================================================
+   Card Icons (UIKit ergänzend)
+   ========================================================================== */
+.card-icon-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.card-icon-container span[uk-icon] {
+    color: var(--theme-primary);
+    transition: color 0.3s ease;
+}
+
+.uk-card:hover .card-icon-container span[uk-icon] {
+    color: #e64a19; /* Dunklere Variante von theme-primary beim Hover */
+}
+
+/* Block Editor Icon Controls */
+.card-icon-controls {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+.card-icon-controls h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Secondary Template full-width background */
+.secondary-fullwidth {
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    background: #f0f0f0; /* helles Grau */
+    padding: 40px 0;
+}
+
+.secondary-fullwidth .uk-container {
+    max-width: 1200px;
+}
+
+/* Cards hover: lift and shadow (match cards block styling) */
+.wp-block-group .uk-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.wp-block-group .uk-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Make entire card clickable */
+a.fev-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+a.fev-card-link .uk-card {
+    height: 100%;
+}
+
+a.fev-card-link:focus,
+a.fev-card-link:hover {
+    outline: none;
+    text-decoration: none;
+}
+
+/* Ensure card content's link states are unchanged */
+a.fev-card-link .uk-card a {
+    color: inherit;
+}

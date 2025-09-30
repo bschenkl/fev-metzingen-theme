@@ -1,0 +1,92 @@
+/* CSS für den FeV Cards Block im Frontend */
+
+.fev-cards-block {
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.fev-cards-block .uk-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fev-cards-block .uk-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.fev-cards-block .card-icon-container {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.fev-cards-block .card-icon-container span[uk-icon] {
+    color: var(--theme-primary);
+    transition: color 0.3s ease;
+}
+
+.fev-cards-block .uk-card:hover .card-icon-container span[uk-icon] {
+    color: #e64a19;
+}
+
+.fev-cards-block .uk-card-title {
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.fev-cards-block .uk-card p {
+    line-height: 1.6;
+    color: #666;
+}
+
+/* Card Link - gesamte Card klickbar machen */
+.fev-cards-block .fev-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    padding: 0 !important;
+}
+
+/* Card Content Wrapper - zentriert alle Inhalte */
+.fev-cards-block .fev-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    padding: 0 !important;
+}
+
+/* Spezifische Zentrierung für Block-Elemente */
+.fev-cards-block .fev-card-content > h3,
+.fev-cards-block .fev-card-content > .wp-block-image,
+.fev-cards-block .fev-card-content > figure,
+.fev-cards-block .fev-card-content > .card-icon-container {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+/* Paragraphen linksbündig */
+.fev-cards-block .fev-card-content > p {
+    text-align: left;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+@media (max-width: 768px) {
+    .fev-cards-block {
+        width: 95%;
+        margin-top: 30px;
+    }
+    
+    .fev-cards-block .uk-card {
+        margin-bottom: 20px;
+    }
+}
