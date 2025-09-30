@@ -33,9 +33,7 @@
                 ),
                 el('div', { className: `fev-section-block fev-section-${background}` , style: { width: '100vw', marginLeft: '50%', transform: 'translateX(-50%)', padding: '40px 0' } },
                     el('div', { className: 'uk-container' },
-                        el('div', { className: 'uk-width-4-5@m uk-margin-auto' },
-                            el(InnerBlocks)
-                        )
+                        el(InnerBlocks)
                     )
                 )
             );
@@ -45,9 +43,7 @@
             const { background } = attributes;
             return el('div', { className: `fev-section-block fev-section-${background}` , 'data-background': background },
                 el('div', { className: 'uk-container' },
-                    el('div', { className: 'uk-width-4-5@m uk-margin-auto' },
-                        el(InnerBlocks.Content)
-                    )
+                    el(InnerBlocks.Content)
                 )
             );
         }

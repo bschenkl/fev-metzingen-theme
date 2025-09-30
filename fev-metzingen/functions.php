@@ -182,7 +182,7 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
                 $has_children = $this->has_children($elements, $item->ID);
                 $classes = empty($item->classes) ? [] : (array) $item->classes;
                 $class_names = array('uk-nav-item');
-                if (in_array('current-menu-item', $classes)) {
+                if (in_array('current-menu-item', $classes) || in_array('current-menu-ancestor', $classes) || in_array('current-menu-parent', $classes)) {
                     $class_names[] = 'uk-active';
                 }
                 if ($has_children) {
@@ -215,19 +215,19 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
                 $has_children = $this->has_children($elements, $item->ID);
                 $classes = empty($item->classes) ? [] : (array) $item->classes;
                 $class_names = array('uk-nav-item');
-                if (in_array('current-menu-item', $classes)) {
+                if (in_array('current-menu-item', $classes) || in_array('current-menu-ancestor', $classes) || in_array('current-menu-parent', $classes)) {
                     $class_names[] = 'uk-active';
                 }
                 $class_attr = $class_names ? ' class="' . esc_attr(join(' ', $class_names)) . '"' : '';
                 $output .= '<li' . $class_attr . '>';
                 $attributes = !empty($item->url) ? ' href="' . esc_url($item->url) . '"' : '';
                 if ($has_children) {
-                    $output .= '<div style="display:flex;align-items:center;">';
-                    $output .= '<a' . $attributes . ' style="margin-right:4px;">' . esc_html($item->title) . '</a>';
-                    $output .= '<button class="uk-dropnav-toggle" type="button" aria-label="Untermenü öffnen" aria-expanded="false" uk-toggle="target: #offcanvas-sub-' . $item->ID . '" tabindex="0" style="background:none;border:none;padding:0;cursor:pointer;">';
+                    $output .= '<a' . $attributes . ' class="uk-flex uk-flex-middle">';
+                    $output .= '<span>' . esc_html($item->title) . '</span>';
+                    $output .= '<button class="uk-dropnav-toggle uk-button-link" type="button" aria-label="Untermenü öffnen" aria-expanded="false" uk-toggle="target: #offcanvas-sub-' . $item->ID . '" tabindex="0" style="background:none;border:none;padding:4px;cursor:pointer;color:inherit;margin-left:8px;">';
                     $output .= '<span uk-drop-parent-icon class="uk-drop-parent-icon-offcanvas"></span>';
                     $output .= '</button>';
-                    $output .= '</div>';
+                    $output .= '</a>';
                     $output .= '<ul class="uk-nav-sub" id="offcanvas-sub-' . $item->ID . '" hidden>';
                     $output .= $this->render_offcanvas($elements, $max_depth, $item->ID);
                     $output .= '</ul>';

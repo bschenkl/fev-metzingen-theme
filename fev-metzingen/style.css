@@ -2,7 +2,7 @@
 Theme Name: FeV Metzingen Theme
 Theme URI: https://example.com/fev-metzingen
 Author: Benjamin Schenkl
-Description: Ein modulares, barriereoptimiertes WordPress Theme auf Basis von UIkit.
+Description: Ein modulares, WordPress Theme auf Basis von UIkit.
 Version: 1.1.1
 Text Domain: fev-metzingen
 Requires at least: 6.0
@@ -159,6 +159,21 @@ footer a:hover {
 
 footer p {
     color: var(--theme-footer-text) !important;
+}
+
+/* Footer-Menü: Abstände entfernen */
+footer .footer-nav,
+footer .footer-nav .uk-nav {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+footer .footer-nav .uk-nav > li + li {
+    margin-top: 0 !important;
+}
+footer .footer-nav .uk-nav > li > a {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    line-height: 1.3;
 }
 
 
