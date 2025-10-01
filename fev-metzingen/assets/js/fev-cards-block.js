@@ -5,7 +5,7 @@
     const { PanelBody, TextControl, SelectControl, ToggleControl } = wp.components;
     const { __ } = wp.i18n;
 
-    // Verfügbare Icons
+    // available Icons
     const availableIcons = [
         { label: __('Kein Icon'), value: '' },
         { label: __('Stern'), value: 'star' },

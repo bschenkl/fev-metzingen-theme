@@ -1,0 +1,181 @@
+/* FeV Button Block - Editor Styles */
+.fev-button-block-editor {
+    padding: 20px;
+    border: 2px dashed #e0e0e0;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    margin: 10px 0;
+}
+
+.fev-button-block-editor:hover {
+    border-color: #0073aa;
+    background-color: #f0f8ff;
+}
+
+.fev-button-block-editor .uk-button {
+    pointer-events: none; /* Prevent clicking in editor */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    transition: all 0.2s ease;
+}
+
+.fev-button-block-editor .uk-button:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+/* Button size previews in editor */
+.fev-button-block-editor .uk-button-small {
+    padding: 0 12px;
+    min-height: 32px;
+    font-size: 12px;
+}
+
+.fev-button-block-editor .uk-button-large {
+    padding: 0 24px;
+    min-height: 48px;
+    font-size: 16px;
+}
+
+/* Style previews in editor */
+.fev-button-block-editor .uk-button-default {
+    background-color: #e5e5e5;
+    color: #333;
+    border: 1px solid #ccc;
+}
+
+.fev-button-block-editor .uk-button-primary {
+    background-color: #1e87f0;
+    color: white;
+    border: 1px solid #1e87f0;
+}
+
+.fev-button-block-editor .uk-button-secondary {
+    background-color: #222;
+    color: white;
+    border: 1px solid #222;
+}
+
+.fev-button-block-editor .uk-button-danger {
+    background-color: #f0506e;
+    color: white;
+    border: 1px solid #f0506e;
+}
+
+.fev-button-block-editor .uk-button-text {
+    background: none;
+    color: #1e87f0;
+    border: none;
+    text-decoration: underline;
+}
+
+.fev-button-block-editor .uk-button-link {
+    background: none;
+    color: #1e87f0;
+    border: none;
+}
+
+/* Width handling in editor */
+.fev-button-block-editor .uk-width-1-1 {
+    width: 100%;
+}
+
+/* Alignment styles in editor */
+.fev-button-block-editor.uk-text-center {
+    text-align: center;
+}
+
+.fev-button-block-editor.uk-text-right {
+    text-align: right;
+}
+
+.fev-button-block-editor.uk-text-left {
+    text-align: left;
+}
+
+/* Inspector Controls Styling */
+.components-panel__body h2 {
+    font-weight: 600;
+}
+
+.components-base-control__help {
+    font-size: 12px;
+    color: #757575;
+    margin-top: 4px;
+}
+
+/* RichText in button */
+.fev-button-block-editor .rich-text {
+    min-width: 60px;
+    text-align: inherit;
+}
+
+/* Icon spacing in editor */
+.fev-button-block-editor .uk-margin-small-right {
+    margin-right: 8px;
+}
+
+.fev-button-block-editor .uk-margin-small-left {
+    margin-left: 8px;
+}
+
+/* Responsive editor preview */
+@media (max-width: 768px) {
+    .fev-button-block-editor .uk-width-1-1 {
+        display: block;
+        width: 100%;
+    }
+}
+
+/* Focus states for accessibility */
+.fev-button-block-editor .uk-button:focus-visible {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+/* Button group styling in editor */
+.fev-button-block-editor .uk-button-group {
+    display: inline-flex;
+    align-items: center;
+    justify-content: inherit;
+    width: 100%;
+}
+
+/* Help text styling */
+.components-base-control__help {
+    font-style: italic;
+}
+
+/* Panel organization */
+.components-panel__body-toggle {
+    font-weight: 600;
+}
+
+/* URL input field styling */
+.components-text-control__input {
+    width: 100%;
+}
+
+/* Toggle control spacing */
+.components-toggle-control {
+    margin-bottom: 16px;
+}
+
+/* Select control styling */
+.components-select-control__input {
+    width: 100%;
+}
+
+/* Editor state indicators */
+.fev-button-block-editor::before {
+    content: "FeV Smart Button";
+    display: block;
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}

@@ -1,0 +1,263 @@
+/* FeV Button Block - Frontend Styles */
+.fev-button-block {
+    margin: 20px 0;
+}
+
+/* Base button styling (UIkit compatible) */
+.fev-button-block .uk-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin: 0;
+    border: none;
+    overflow: visible;
+    font: inherit;
+    color: inherit;
+    text-transform: none;
+    -webkit-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.1s ease-in-out;
+    transition-property: color, background-color, border-color;
+    vertical-align: middle;
+    line-height: 38px;
+    min-height: 40px;
+    padding: 0 30px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+/* Button hover effects */
+.fev-button-block .uk-button:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.fev-button-block .uk-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(30, 135, 240, 0.3);
+}
+
+.fev-button-block .uk-button:active {
+    transform: translateY(0);
+    transition: none;
+}
+
+/* Button Styles */
+.fev-button-block .uk-button-default {
+    background-color: #e5e5e5;
+    color: #666;
+    border-color: #e5e5e5;
+}
+
+.fev-button-block .uk-button-default:hover {
+    background-color: #d5d5d5;
+    color: #666;
+    border-color: #d5d5d5;
+}
+
+.fev-button-block .uk-button-primary {
+    background-color: #1e87f0;
+    color: #fff;
+    border-color: #1e87f0;
+}
+
+.fev-button-block .uk-button-primary:hover {
+    background-color: #0f7ae5;
+    color: #fff;
+    border-color: #0f7ae5;
+}
+
+.fev-button-block .uk-button-secondary {
+    background-color: #222;
+    color: #fff;
+    border-color: #222;
+}
+
+.fev-button-block .uk-button-secondary:hover {
+    background-color: #111;
+    color: #fff;
+    border-color: #111;
+}
+
+.fev-button-block .uk-button-danger {
+    background-color: #f0506e;
+    color: #fff;
+    border-color: #f0506e;
+}
+
+.fev-button-block .uk-button-danger:hover {
+    background-color: #ee395b;
+    color: #fff;
+    border-color: #ee395b;
+}
+
+.fev-button-block .uk-button-text {
+    padding: 0;
+    line-height: 1.5;
+    background: none;
+    color: #1e87f0;
+    min-height: auto;
+    border: none;
+}
+
+.fev-button-block .uk-button-text:hover {
+    color: #0f7ae5;
+    text-decoration: underline;
+    transform: none;
+    box-shadow: none;
+}
+
+.fev-button-block .uk-button-link {
+    padding: 0;
+    line-height: 1.5;
+    background: none;
+    color: #1e87f0;
+    min-height: auto;
+    border: none;
+}
+
+.fev-button-block .uk-button-link:hover {
+    color: #0f7ae5;
+    text-decoration: none;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Button Sizes */
+.fev-button-block .uk-button-small {
+    min-height: 30px;
+    padding: 0 15px;
+    line-height: 28px;
+    font-size: 12px;
+}
+
+.fev-button-block .uk-button-large {
+    min-height: 55px;
+    padding: 0 40px;
+    line-height: 53px;
+    font-size: 16px;
+}
+
+/* Button Width */
+.fev-button-block .uk-width-1-1 {
+    width: 100%;
+}
+
+/* Alignment */
+.fev-button-block.uk-text-left {
+    text-align: left;
+}
+
+.fev-button-block.uk-text-center {
+    text-align: center;
+}
+
+.fev-button-block.uk-text-right {
+    text-align: right;
+}
+
+/* Icon spacing */
+.fev-button-block .uk-margin-small-right {
+    margin-right: 8px;
+}
+
+.fev-button-block .uk-margin-small-left {
+    margin-left: 8px;
+}
+
+/* Icon styling */
+.fev-button-block [uk-icon] {
+    vertical-align: middle;
+}
+
+/* Responsive design */
+@media (max-width: 640px) {
+    .fev-button-block .uk-button {
+        padding: 0 20px;
+        font-size: 14px;
+    }
+    
+    .fev-button-block .uk-button-small {
+        padding: 0 12px;
+        font-size: 11px;
+    }
+    
+    .fev-button-block .uk-button-large {
+        padding: 0 30px;
+        font-size: 15px;
+    }
+    
+    /* Full width on mobile for better UX */
+    .fev-button-block .uk-button.mobile-full-width {
+        width: 100%;
+        display: block;
+    }
+}
+
+/* Accessibility improvements */
+.fev-button-block .uk-button:focus-visible {
+    outline: 2px solid #1e87f0;
+    outline-offset: 2px;
+}
+
+/* Disabled state */
+.fev-button-block .uk-button:disabled,
+.fev-button-block .uk-button.uk-disabled {
+    background-color: #f8f8f8;
+    color: #999;
+    border-color: #e5e5e5;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.fev-button-block .uk-button:disabled:hover,
+.fev-button-block .uk-button.uk-disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* Loading state (for future enhancement) */
+.fev-button-block .uk-button.is-loading {
+    position: relative;
+    color: transparent;
+}
+
+.fev-button-block .uk-button.is-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 16px;
+    height: 16px;
+    margin: -8px 0 0 -8px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: uk-spinner 0.8s linear infinite;
+}
+
+@keyframes uk-spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Print styles */
+@media print {
+    .fev-button-block .uk-button {
+        background: none !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+    }
+    
+    .fev-button-block .uk-button::after {
+        content: " (" attr(href) ")";
+        font-size: 12px;
+    }
+}

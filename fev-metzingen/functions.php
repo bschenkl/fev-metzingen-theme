@@ -554,3 +554,94 @@ function register_fev_section_block() {
     ]);
 }
 add_action('init', 'register_fev_section_block');
+
+// ==========================
+// 9. FeV Table Block (UIkit table with dynamic rows/columns)
+// ==========================
+function register_fev_table_block() {
+    // Table Block JavaScript
+    $table_js_version = fev_asset_version('/assets/js/fev-table-block.js') ?: '1.0';
+    wp_register_script(
+        'fev-table-block',
+        get_template_directory_uri() . '/assets/js/fev-table-block.js',
+        ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n'],
+        $table_js_version,
+        true
+    );
+
+    // Table Block Editor CSS
+    $table_editor_css_version = fev_asset_version('/assets/css/fev-table-block-editor.css') ?: '1.0';
+    wp_register_style(
+        'fev-table-block-editor',
+        get_template_directory_uri() . '/assets/css/fev-table-block-editor.css',
+        ['wp-edit-blocks'],
+        $table_editor_css_version
+    );
+
+    // Table Block Frontend CSS
+    $table_css_version = fev_asset_version('/assets/css/fev-table-block.css') ?: '1.0';
+    wp_register_style(
+        'fev-table-block-frontend',
+        get_template_directory_uri() . '/assets/css/fev-table-block.css',
+        [],
+        $table_css_version
+    );
+
+    // Table Block Frontend JavaScript
+    $table_frontend_js_version = fev_asset_version('/assets/js/fev-table-block-frontend.js') ?: '1.0';
+    wp_register_script(
+        'fev-table-block-frontend-js',
+        get_template_directory_uri() . '/assets/js/fev-table-block-frontend.js',
+        [],
+        $table_frontend_js_version,
+        true
+    );
+
+    register_block_type('fev-metzingen/table', [
+        'editor_script' => 'fev-table-block',
+        'editor_style' => 'fev-table-block-editor',
+        'style' => 'fev-table-block-frontend',
+        'script' => 'fev-table-block-frontend-js'
+    ]);
+}
+add_action('init', 'register_fev_table_block');
+
+// ==========================
+// 10. FeV Button Block (Smart button with UIkit styling)
+// ==========================
+function register_fev_button_block() {
+    // Button Block JavaScript
+    $button_js_version = fev_asset_version('/assets/js/fev-button-block.js') ?: '1.0';
+    wp_register_script(
+        'fev-button-block',
+        get_template_directory_uri() . '/assets/js/fev-button-block.js',
+        ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n'],
+        $button_js_version,
+        true
+    );
+
+    // Button Block Editor CSS
+    $button_editor_css_version = fev_asset_version('/assets/css/fev-button-block-editor.css') ?: '1.0';
+    wp_register_style(
+        'fev-button-block-editor',
+        get_template_directory_uri() . '/assets/css/fev-button-block-editor.css',
+        ['wp-edit-blocks'],
+        $button_editor_css_version
+    );
+
+    // Button Block Frontend CSS
+    $button_css_version = fev_asset_version('/assets/css/fev-button-block.css') ?: '1.0';
+    wp_register_style(
+        'fev-button-block-frontend',
+        get_template_directory_uri() . '/assets/css/fev-button-block.css',
+        [],
+        $button_css_version
+    );
+
+    register_block_type('fev-metzingen/button', [
+        'editor_script' => 'fev-button-block',
+        'editor_style' => 'fev-button-block-editor',
+        'style' => 'fev-button-block-frontend'
+    ]);
+}
+add_action('init', 'register_fev_button_block');

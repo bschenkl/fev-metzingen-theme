@@ -1,0 +1,422 @@
+/* FeV Table Block - Editor Styles */
+.fev-table-editor {
+    border: 2px dashed #ddd;
+    padding: 20px;
+    margin: 20px 0;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.fev-table-editor::before {
+    content: "FeV UIkit Table (with Blocks)";
+    display: block;
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.table-toolbar {
+    margin-bottom: 15px;
+    text-align: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.table-toolbar button {
+    margin: 0 5px;
+}
+
+.table-wrapper {
+    position: relative;
+    overflow-x: auto;
+}
+
+.editor-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border: 1px solid #ddd;
+    min-width: 500px;
+}
+
+.editor-table th,
+.editor-table td {
+    border: 1px solid #ddd;
+    padding: 12px 8px;
+    min-width: 120px;
+    position: relative;
+    vertical-align: top;
+}
+
+.editor-table th {
+    background: #f5f5f5;
+    font-weight: bold;
+    position: relative;
+}
+
+.editor-table .richtext-placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* Column remove button */
+.column-remove-btn {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    font-size: 12px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    line-height: 1;
+    z-index: 10;
+}
+
+.editor-table th:hover .column-remove-btn {
+    display: block;
+}
+
+.column-remove-btn:hover {
+    background: #c82333;
+}
+
+/* Row controls */
+.row-controls {
+    width: 40px !important;
+    min-width: 40px !important;
+    text-align: center;
+    background: #f9f9f9 !important;
+    border-left: 2px solid #ddd !important;
+    padding: 4px !important;
+}
+
+.row-remove-btn {
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    font-size: 12px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.row-remove-btn:hover {
+    background: #c82333;
+}
+
+/* RichText styling in editor */
+.editor-table .rich-text {
+    width: 100%;
+    min-height: 20px;
+    outline: none;
+    border: none;
+    background: transparent;
+    resize: none;
+}
+
+.editor-table .rich-text:focus {
+    outline: 2px solid #007cba;
+    outline-offset: -2px;
+}
+
+/* Responsive table preview */
+.editor-table.preview-responsive {
+    font-size: 14px;
+}
+
+.editor-table.preview-small {
+    font-size: 12px;
+}
+
+.editor-table.preview-small th,
+.editor-table.preview-small td {
+    padding: 6px 4px;
+}
+
+/* Hover preview */
+.editor-table.preview-hover tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* Striped preview */
+.editor-table.preview-striped tbody tr:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+/* Divider preview */
+.editor-table.preview-divider th,
+.editor-table.preview-divider td {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    border-left: none;
+    border-right: none;
+}
+
+.editor-table.preview-divider {
+    border: none;
+}
+
+/* Inspector Controls */
+.table-structure-controls {
+    padding: 16px;
+    background: white;
+    border-radius: 4px;
+    margin-bottom: 16px;
+}
+
+.table-structure-controls p {
+    margin: 8px 0;
+    font-weight: 600;
+}
+
+.components-button-group {
+    display: flex;
+    gap: 4px;
+}
+
+/* Table Header Styling */
+.table-header {
+    margin-bottom: 16px;
+}
+
+.table-header-row {
+    display: grid;
+    gap: 2px;
+    background: #e9ecef;
+    padding: 2px;
+    border-radius: 4px;
+}
+
+.table-header-cell {
+    background: white;
+    padding: 12px;
+    border-radius: 2px;
+    min-height: 40px;
+}
+
+.table-header-cell .rich-text {
+    font-weight: bold;
+    color: #333;
+}
+
+/* Table Body Editor */
+.table-body {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.table-row-editor {
+    display: grid !important;
+    border-bottom: 1px solid #ddd;
+    gap: 0;
+    grid-template-columns: repeat(3, 1fr); /* fallback */
+    width: 100%;
+}
+
+.table-row-editor:last-child {
+    border-bottom: none;
+}
+
+/* Force grid layout for all column counts */
+.table-row-editor[style*="repeat(1"] {
+    grid-template-columns: 1fr !important;
+}
+
+.table-row-editor[style*="repeat(2"] {
+    grid-template-columns: 1fr 1fr !important;
+}
+
+.table-row-editor[style*="repeat(3"] {
+    grid-template-columns: 1fr 1fr 1fr !important;
+}
+
+.table-row-editor[style*="repeat(4"] {
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+}
+
+.table-row-editor[style*="repeat(5"] {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr !important;
+}
+
+.table-row-editor[style*="repeat(6"] {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr !important;
+}
+
+.table-cell-editor {
+    border-right: 1px solid #ddd;
+    padding: 12px;
+    background: white;
+    min-height: 60px;
+    display: block;
+    width: 100%;
+}
+
+.table-cell-editor:last-child {
+    border-right: none;
+}
+
+/* Ensure cells don't stack vertically */
+.table-row-editor > .wp-block {
+    margin: 0 !important;
+    width: auto !important;
+    flex: none !important;
+}
+
+/* Override Gutenberg's default block layout in table rows */
+.table-row-editor .block-editor-inner-blocks {
+    display: contents;
+}
+
+.table-row-editor .block-editor-block-list__layout {
+    display: contents;
+}
+
+/* Force horizontal layout */
+.table-row-editor > .wp-block,
+.table-row-editor .block-editor-block-list__layout > .wp-block {
+    display: block;
+    margin: 0;
+}
+
+/* Ensure table cells fill grid areas properly */
+.table-row-editor .table-cell-editor {
+    grid-column: auto;
+    grid-row: auto;
+}
+
+/* Override WordPress core block margins in table cells */
+.table-cell-editor [data-block] {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Reset block spacing for specific block types */
+.table-cell-editor .wp-block-fev-metzingen-button {
+    margin: 0 !important;
+}
+
+.table-cell-editor .block-editor-block-list__block {
+    margin: 0 !important;
+}
+
+/* Fix for Gutenberg's default spacing */
+.table-cell-editor .block-editor-block-list__layout > .wp-block {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+/* Ensure clean button display */
+.table-cell-editor .fev-button-block-editor {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+.table-cell-editor .block-list-appender {
+    margin: 4px 0 0 0;
+}
+
+/* Remove spacing from block appender when it's the first element */
+.table-cell-editor .block-list-appender:first-child {
+    margin-top: 0 !important;
+}
+
+/* Tighten up the inserter button */
+.table-cell-editor .block-editor-inserter {
+    margin: 0;
+}
+
+.table-cell-editor .block-editor-default-block-appender {
+    margin: 0;
+}
+
+.table-cell-editor .wp-block {
+    margin: 4px 0;
+}
+
+.table-cell-editor .wp-block:first-child {
+    margin-top: 0 !important;
+}
+
+.table-cell-editor .wp-block:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Remove unwanted spacing from all block types in cells */
+.table-cell-editor .wp-block-button,
+.table-cell-editor .wp-block-buttons,
+.table-cell-editor .wp-block-paragraph,
+.table-cell-editor .wp-block-heading,
+.table-cell-editor .wp-block-image,
+.table-cell-editor .wp-block-list {
+    margin: 0 !important;
+}
+
+/* Special handling for our custom button block */
+.table-cell-editor .wp-block[data-type="fev-metzingen/button"] {
+    margin: 0 !important;
+}
+
+/* Remove default paragraph margins */
+.table-cell-editor p {
+    margin: 0 !important;
+}
+
+/* Remove list margins */
+.table-cell-editor ul,
+.table-cell-editor ol {
+    margin: 0 !important;
+    padding-left: 20px;
+}
+
+/* Remove heading margins */
+.table-cell-editor h1,
+.table-cell-editor h2,
+.table-cell-editor h3,
+.table-cell-editor h4,
+.table-cell-editor h5,
+.table-cell-editor h6 {
+    margin: 0 !important;
+}
+
+/* Responsive editor */
+@media (max-width: 768px) {
+    .fev-table-editor {
+        padding: 16px;
+    }
+    
+    .table-header-row,
+    .table-row-editor {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .table-cell-editor {
+        border-right: none;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    .table-cell-editor:last-child {
+        border-bottom: none;
+    }
+    
+    .table-header-cell,
+    .table-cell-editor {
+        padding: 8px !important;
+        font-size: 14px;
+    }
+}

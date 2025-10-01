@@ -15,8 +15,8 @@
         <div class="uk-container">
             <div uk-height-viewport='expand: true' class="uk-grid" uk-grid>
                 <div class="uk-width-1-2@s uk-align-center">
-                    <h2 id="notfound-heading" class="uk-heading-divider"><?php esc_html_e('Diese Seite existiert nicht.','fev-metzingen'); ?></h2>
-                    <p><?php esc_html_e('Es scheint so, dass die aufgerufene Adresse nicht existiert oder verschoben wurde. Versichere dich, dass du den richtigen Link verwendet hast. Bei Fragen kontaktiere uns bitte.','fev-metzingen'); ?></p>
+                    <h2 id="notfound-heading" class="uk-heading-divider"><?php esc_html_e('Die aufgerufene Seite wurde nicht gefunden.','fev-metzingen'); ?></h2>
+                    <p><?php esc_html_e('Es scheint so, dass die aufgerufene Adresse nicht existiert oder verschoben wurde. Versichern Sie sich, dass Sie den richtigen Link verwendet haben. Bei Fragen kontaktieren Sie uns bitte.','fev-metzingen'); ?></p>
                     <p><a class="uk-button uk-button-primary uk-align-center" href="<?php echo esc_url(home_url('/')); ?>"><?php esc_html_e('Zurück zur Startseite','fev-metzingen'); ?></a></p>
                 </div>
             </div>

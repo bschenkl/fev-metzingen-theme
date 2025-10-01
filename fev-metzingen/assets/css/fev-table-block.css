@@ -1,0 +1,177 @@
+/* Frontend styles for FeV Table Block */
+.fev-table-block {
+    margin: 20px 0;
+}
+
+.fev-table-block .uk-table {
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: transparent;
+    border-collapse: collapse;
+}
+
+.fev-table-block .uk-table th,
+.fev-table-block .uk-table td {
+    padding: 16px 12px;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid #e5e5e5;
+}
+
+.fev-table-block .uk-table thead th {
+    font-weight: bold;
+    color: #333;
+    border-bottom: 2px solid #e5e5e5;
+    background-color: #f8f9fa;
+}
+
+.fev-table-block .uk-table tbody tr:first-child th,
+.fev-table-block .uk-table tbody tr:first-child td {
+    border-top: none;
+}
+
+/* UIkit Table Variations */
+.fev-table-block .uk-table-divider th,
+.fev-table-block .uk-table-divider td {
+    border-top: 1px solid #e5e5e5;
+}
+
+.fev-table-block .uk-table-divider thead th {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.fev-table-block .uk-table-striped tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.fev-table-block .uk-table-hover tbody tr:hover {
+    background-color: #f5f5f5;
+}
+
+.fev-table-block .uk-table-small th,
+.fev-table-block .uk-table-small td {
+    padding: 10px 12px;
+}
+
+/* Responsive wrapper */
+.fev-table-block.uk-overflow-auto {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.fev-table-block.uk-overflow-auto .uk-table {
+    min-width: 600px;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    .fev-table-block .uk-table {
+        font-size: 14px;
+    }
+    
+    .fev-table-block .uk-table th,
+    .fev-table-block .uk-table td {
+        padding: 12px 8px;
+    }
+    
+    .fev-table-block .uk-table-small th,
+    .fev-table-block .uk-table-small td {
+        padding: 8px 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fev-table-block .uk-table {
+        font-size: 13px;
+    }
+    
+    .fev-table-block .uk-table th,
+    .fev-table-block .uk-table td {
+        padding: 10px 6px;
+    }
+}
+
+/* Frontend styles for block-based table structure */
+.fev-table-block-frontend {
+    margin: 20px 0;
+}
+
+.fev-table-block-frontend .table-body-content {
+    display: contents;
+}
+
+/* Remove unwanted margins from blocks in table cells (Frontend) */
+.fev-table-block-frontend .table-cell-content .wp-block {
+    margin: 0 !important;
+}
+
+.fev-table-block-frontend .table-cell-content p,
+.fev-table-block-frontend .table-cell-content h1,
+.fev-table-block-frontend .table-cell-content h2,
+.fev-table-block-frontend .table-cell-content h3,
+.fev-table-block-frontend .table-cell-content h4,
+.fev-table-block-frontend .table-cell-content h5,
+.fev-table-block-frontend .table-cell-content h6 {
+    margin: 0 !important;
+}
+
+.fev-table-block-frontend .table-cell-content ul,
+.fev-table-block-frontend .table-cell-content ol {
+    margin: 0 !important;
+    padding-left: 20px;
+}
+
+/* Button spacing in frontend table cells */
+.fev-table-block-frontend .table-cell-content .wp-block-button,
+.fev-table-block-frontend .table-cell-content .wp-block-buttons,
+.fev-table-block-frontend .table-cell-content .fev-button-block {
+    margin: 0 !important;
+}
+
+/* Convert group blocks to table structure in frontend */
+.fev-table-block-frontend .wp-block-group.table-row {
+    display: table-row;
+    margin: 0;
+    padding: 0;
+}
+
+.fev-table-block-frontend .wp-block-group.table-cell-content {
+    display: table-cell;
+    margin: 0;
+    padding: 8px 12px;
+    vertical-align: top;
+    border: 1px solid #e5e5e5;
+}
+
+/* UIkit table styling applied to blocks */
+.fev-table-block-frontend.uk-overflow-auto .wp-block-group.table-cell-content {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Table style variations for blocks */
+.fev-table-block-frontend[data-table-style="divider"] .wp-block-group.table-cell-content {
+    border-top: 1px solid #e5e5e5;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+}
+
+.fev-table-block-frontend[data-table-style="striped"] .wp-block-group.table-row:nth-child(even) .wp-block-group.table-cell-content {
+    background-color: #f8f8f8;
+}
+
+/* Responsive handling for block-based table */
+@media (max-width: 768px) {
+    .fev-table-block-frontend.uk-overflow-auto {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .fev-table-block-frontend .wp-block-group.table-cell-content {
+        min-width: 120px;
+        padding: 6px 8px;
+        font-size: 14px;
+    }
+}
