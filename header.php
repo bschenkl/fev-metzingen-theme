@@ -11,7 +11,7 @@
 <a class="skip-link" href="#main-content"><?php esc_html_e('Zum Inhalt springen','fev-metzingen'); ?></a>
 
 
-<header class="uk-position-absolute uk-width-1-1 uk-margin-top uk-margin-remove-top@s" style="z-index: 1000; top: 0; left: 0;" role="banner">
+<header class="uk-position-absolute uk-width-1-1 uk-margin-top uk-margin-remove-top@s uk-animation-slide-top-small" style="z-index: 1000; top: 0; left: 0;" role="banner">
     <div class="uk-container">
         <nav class="uk-navbar-container uk-navbar-transparent" uk-navbar role="navigation" aria-label="Hauptnavigation">
             <div class="uk-navbar-left">

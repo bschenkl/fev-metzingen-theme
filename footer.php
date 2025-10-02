@@ -1,4 +1,4 @@
-<footer class="uk-section uk-section-secondary uk-light">
+<footer class="uk-section uk-section-secondary uk-light" uk-scrollspy="cls: uk-animation-slide-bottom-small; repeat: false">
     <div class="uk-container">
         <div class="uk-grid uk-child-width-1-3@m" uk-grid>
             <div>
@@ -12,7 +12,7 @@
                 ?>
             </div>
             <div>
-                <h4><?php esc_html_e('Kontakt','fev-metzingen'); ?></h4>
+                <h4 uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: false; delay: 50"><?php esc_html_e('Kontakt','fev-metzingen'); ?></h4>
                 <?php
                     $org   = get_theme_mod('footer_org_name', 'FeV Metzingen');
                     $street= get_theme_mod('footer_street', 'Maurenstraße 13');
@@ -21,7 +21,7 @@
                     $email = sanitize_email(get_theme_mod('footer_email', 'info@fev-metzingen.de'));
                     $phone = get_theme_mod('footer_phone', '');
                 ?>
-                <address style="font-style:normal;">
+                <address style="font-style:normal;" uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: false; delay: 100">
                     <?php echo esc_html($org); ?><br>
                     <?php echo esc_html($street); ?><br>
                     <?php echo esc_html(trim($zip . ' ' . $city)); ?><br><br>
@@ -34,7 +34,7 @@
                     <?php endif; ?>
                 </address>
             </div>
-            <div>
+            <div uk-scrollspy="cls: uk-animation-slide-bottom-medium; repeat: false; delay: 200">
                 <h4><?php esc_html_e('Informationen','fev-metzingen'); ?></h4>
                 <?php if (has_nav_menu('footer')) {
                     wp_nav_menu([

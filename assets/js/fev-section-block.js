@@ -31,7 +31,7 @@
                         })
                     )
                 ),
-                el('div', { className: `fev-section-block fev-section-${background}` , style: { width: '100vw', marginLeft: '50%', transform: 'translateX(-50%)', padding: '40px 0' } },
+                el('div', { className: `fev-section-block fev-section-${background}` , style: { width: '100vw', marginLeft: '50%', transform: 'translateX(-50%)', padding: '40px 0' }, 'uk-scrollspy': 'cls: uk-animation-slide-left-medium' },
                     el('div', { className: 'uk-container' },
                         el(InnerBlocks)
                     )
@@ -41,7 +41,8 @@
         save: function(props) {
             const { attributes } = props;
             const { background } = attributes;
-            return el('div', { className: `fev-section-block fev-section-${background}` , 'data-background': background },
+            const animation = background === 'white' ? 'uk-animation-slide-left-medium' : 'uk-animation-slide-right-medium';
+            return el('div', { className: `fev-section-block fev-section-${background}` , 'data-background': background, 'uk-scrollspy': `cls: ${animation}; delay: 100` },
                 el('div', { className: 'uk-container' },
                     el(InnerBlocks.Content)
                 )

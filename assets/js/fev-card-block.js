@@ -164,7 +164,7 @@
                 padding: `${cardPadding}px`
             };
 
-            const cardContent = el('div', { className: cardClasses, style: cardStyles },
+            const cardContent = el('div', { className: cardClasses, style: cardStyles, 'uk-scrollspy': 'cls: uk-animation-slide-bottom-medium; delay: 100' },
                 el(InnerBlocks.Content)
             );
 
