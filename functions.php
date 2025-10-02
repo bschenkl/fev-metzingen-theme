@@ -39,9 +39,11 @@ function uikit_enqueue_assets() {
     wp_enqueue_style('theme-style', get_stylesheet_uri(), [], $style_version);
 
     // Block frontend styles (if registered) – dynamic version
-    $cards_css_version = fev_asset_version('/assets/css/fev-cards-block.css') ?: '1.0';
+    $card_css_version = fev_asset_version('/assets/css/fev-card-block.css') ?: '1.0';
+    $icon_css_version = fev_asset_version('/assets/css/fev-icon-block.css') ?: '1.0';
     $section_css_version = fev_asset_version('/assets/css/fev-section-block.css') ?: '1.0';
-    wp_register_style('fev-cards-block-frontend', get_template_directory_uri() . '/assets/css/fev-cards-block.css', [], $cards_css_version);
+    wp_register_style('fev-card-block-frontend', get_template_directory_uri() . '/assets/css/fev-card-block.css', [], $card_css_version);
+    wp_register_style('fev-icon-block-frontend', get_template_directory_uri() . '/assets/css/fev-icon-block.css', [], $icon_css_version);
     wp_register_style('fev-section-block-frontend', get_template_directory_uri() . '/assets/css/fev-section-block.css', [], $section_css_version);
 
     // Theme JS
@@ -360,33 +362,7 @@ function get_hero_description($post_id = null) {
 }
 
 // ==========================
-// 6. Block patterns (corrected function names)
-// ==========================
-function uikit_register_block_patterns_categories() {
-    register_block_pattern_category('fev-metzingen', ['label' => 'FEV Metzingen']);
-    register_block_pattern_category('custom', ['label' => 'Custom Patterns']);
-    register_block_pattern_category('layout', ['label' => 'Layout']);
-}
-add_action('init', 'uikit_register_block_patterns_categories', 10);
-
-function uikit_register_block_patterns() {
-    $pattern_file = get_template_directory() . '/patterns/cards.php';
-    if (file_exists($pattern_file)) {
-        register_block_pattern(
-            'fev-metzingen/three-cards',
-            [
-                'title'       => __('Three-column layout', 'fev-metzingen'),
-                'description' => __('A simple three-column layout with headings and text.', 'fev-metzingen'),
-                'categories'  => ['layout'],
-                'content'     => file_get_contents($pattern_file),
-            ]
-        );
-    }
-}
-add_action('init', 'uikit_register_block_patterns', 10);
-
-// ==========================
-// 7. Security functions
+// 6. Security functions
 // ==========================
 // Removes WordPress version from head for better security
 remove_action('wp_head', 'wp_generator');
@@ -426,94 +402,129 @@ function add_security_headers() {
 add_action('send_headers', 'add_security_headers');
 
 // ==========================
-// 5. Custom fields for icons (only for Gutenberg block)
+// 5. FeV Custom Blocks (Card & Icon)
 // ==========================
-function register_fev_cards_block() {
+function register_fev_custom_blocks() {
+    // Single Card Block
     wp_register_script(
-        'fev-cards-block',
-        get_template_directory_uri() . '/assets/js/fev-cards-block.js',
-        ['wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'],
-        '1.0',
+        'fev-card-block',
+        get_template_directory_uri() . '/assets/js/fev-card-block.js',
+        ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n'],
+        fev_asset_version('/assets/js/fev-card-block.js') ?: '1.0',
+        true
+    );
+
+    // Icon Block
+    wp_register_script(
+        'fev-icon-block',
+        get_template_directory_uri() . '/assets/js/fev-icon-block.js',
+        ['wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n'],
+        fev_asset_version('/assets/js/fev-icon-block.js') ?: '1.0',
         true
     );
 
     wp_register_style(
-        'fev-cards-block-editor',
-        get_template_directory_uri() . '/assets/css/fev-cards-block-editor.css',
+        'fev-card-block-editor',
+        get_template_directory_uri() . '/assets/css/fev-card-block-editor.css',
         ['wp-edit-blocks'],
-        '1.0'
+        fev_asset_version('/assets/css/fev-card-block-editor.css') ?: '1.0'
     );
 
     wp_register_style(
-        'fev-cards-block-frontend',
-        get_template_directory_uri() . '/assets/css/fev-cards-block.css',
+        'fev-card-block-frontend',
+        get_template_directory_uri() . '/assets/css/fev-card-block.css',
         [],
-        '1.0'
+        fev_asset_version('/assets/css/fev-card-block.css') ?: '1.0'
+    );
+
+    wp_register_style(
+        'fev-icon-block-editor',
+        get_template_directory_uri() . '/assets/css/fev-icon-block-editor.css',
+        ['wp-edit-blocks'],
+        fev_asset_version('/assets/css/fev-icon-block-editor.css') ?: '1.0'
+    );
+
+    wp_register_style(
+        'fev-icon-block-frontend',
+        get_template_directory_uri() . '/assets/css/fev-icon-block.css',
+        [],
+        fev_asset_version('/assets/css/fev-icon-block.css') ?: '1.0'
     );
 
     wp_register_script(
-        'fev-cards-block-frontend',
-        get_template_directory_uri() . '/assets/js/fev-cards-block-frontend.js',
+        'fev-card-block-frontend',
+        get_template_directory_uri() . '/assets/js/fev-card-block-frontend.js',
         [],
-        '1.0',
+        fev_asset_version('/assets/js/fev-card-block-frontend.js') ?: '1.0',
         true
     );
 
-    register_block_type('fev-metzingen/cards-block', [
-        'editor_script' => 'fev-cards-block',
-        'editor_style' => 'fev-cards-block-editor',
-        'style' => 'fev-cards-block-frontend',
-        'script' => 'fev-cards-block-frontend',
-        'render_callback' => 'render_fev_cards_block',
+
+
+    // Register Single Card Block
+    register_block_type('fev-metzingen/card-block', [
+        'editor_script' => 'fev-card-block',
+        'editor_style' => 'fev-card-block-editor',
+        'style' => 'fev-card-block-frontend',
+        'script' => 'fev-card-block-frontend',
         'attributes' => [
-            'card1Icon' => [
+            'cardUrl' => [
                 'type' => 'string',
                 'default' => ''
             ],
-            'card1Url' => [
-                'type' => 'string',
-                'default' => ''
+            'isClickable' => [
+                'type' => 'boolean',
+                'default' => false
             ],
-            'card2Icon' => [
-                'type' => 'string',
-                'default' => ''
+            'openInNewTab' => [
+                'type' => 'boolean',
+                'default' => false
             ],
-            'card2Url' => [
+            'cardStyle' => [
                 'type' => 'string',
-                'default' => ''
+                'default' => 'default'
             ],
-            'card3Icon' => [
-                'type' => 'string',
-                'default' => ''
+            'cardPadding' => [
+                'type' => 'number',
+                'default' => 20
             ],
-            'card3Url' => [
+            'centerContent' => [
+                'type' => 'boolean',
+                'default' => false
+            ],
+            'cardBorder' => [
+                'type' => 'boolean',
+                'default' => true
+            ]
+        ]
+    ]);
+
+    // Register Icon Block
+    register_block_type('fev-metzingen/icon-block', [
+        'editor_script' => 'fev-icon-block',
+        'editor_style' => 'fev-icon-block-editor',
+        'style' => 'fev-icon-block-frontend',
+        'attributes' => [
+            'iconName' => [
                 'type' => 'string',
-                'default' => ''
+                'default' => 'star'
+            ],
+            'iconSize' => [
+                'type' => 'number',
+                'default' => 2
+            ],
+            'iconColor' => [
+                'type' => 'string',
+                'default' => 'primary'
+            ],
+            'iconAlignment' => [
+                'type' => 'string',
+                'default' => 'center'
             ]
         ]
     ]);
 }
-add_action('init', 'register_fev_cards_block');
-
-// Render function for the block
-function render_fev_cards_block($attributes, $content) {
-    $card1Icon = isset($attributes['card1Icon']) ? esc_attr($attributes['card1Icon']) : '';
-    $card1Url = isset($attributes['card1Url']) ? esc_url($attributes['card1Url']) : '';
-    $card2Icon = isset($attributes['card2Icon']) ? esc_attr($attributes['card2Icon']) : '';
-    $card2Url = isset($attributes['card2Url']) ? esc_url($attributes['card2Url']) : '';
-    $card3Icon = isset($attributes['card3Icon']) ? esc_attr($attributes['card3Icon']) : '';
-    $card3Url = isset($attributes['card3Url']) ? esc_url($attributes['card3Url']) : '';
-
-    // Simple solution: Use content directly and add icons via CSS/JS
-    $output = "<div class='fev-cards-block uk-width-4-5@m uk-margin-auto uk-margin-large-top' ";
-    $output .= "data-card1-icon='{$card1Icon}' data-card1-url='{$card1Url}' ";
-    $output .= "data-card2-icon='{$card2Icon}' data-card2-url='{$card2Url}' ";
-    $output .= "data-card3-icon='{$card3Icon}' data-card3-url='{$card3Url}'>";
-    $output .= $content;
-    $output .= "</div>";
-
-    return $output;
-}
+add_action('init', 'register_fev_custom_blocks');
 
 // ==========================
 // 8. FeV Section Block (Full-width background wrapper)

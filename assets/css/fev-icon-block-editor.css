@@ -1,0 +1,22 @@
+/* FeV Icon Block - Editor Styles */
+.fev-icon-block-editor {
+    border-radius: 4px;
+    background: #f9f9f9;
+    position: relative;
+}
+
+.fev-icon-block-editor::before {
+    content: "FeV Icon Block";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    font-size: 11px;
+    color: #666;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 3px;
+}
+
+.fev-icon-block-editor span[uk-icon] {
+    pointer-events: none;
+}

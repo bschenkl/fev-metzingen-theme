@@ -1,0 +1,37 @@
+/* FeV Single Card Block - Frontend Styles */
+.fev-card-link {
+    display: block;
+    text-decoration: none !important;
+    color: inherit;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.fev-card-link:hover {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+.fev-card-link:hover .uk-card {
+    transform: translateY(-2px);
+}
+
+.fev-card-link:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 2px;
+}
+
+/* Card Responsive Improvements */
+.uk-card {
+    transition: all 0.2s ease;
+}
+
+.uk-card-hover:hover {
+    box-shadow: 0 14px 25px rgba(0,0,0,0.16);
+}
+
+/* Responsive Card Padding */
+@media (max-width: 640px) {
+    .uk-card-body {
+        padding: 15px !important;
+    }
+}

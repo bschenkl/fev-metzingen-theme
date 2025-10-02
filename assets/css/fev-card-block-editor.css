@@ -1,0 +1,21 @@
+/* FeV Single Card Block - Editor Styles */
+.fev-card-block-editor {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.fev-card-block-editor .uk-card {
+    position: relative;
+}
+
+.fev-card-block-editor .uk-card::before {
+    content: "FeV Card Block";
+    position: absolute;
+    top: -25px;
+    left: 0;
+    font-size: 11px;
+    color: #666;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 3px;
+}

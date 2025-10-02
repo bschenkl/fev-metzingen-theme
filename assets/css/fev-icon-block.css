@@ -1,0 +1,18 @@
+/* FeV Icon Block - Frontend Styles */
+.fev-icon-block {
+    display: inline-block;
+    line-height: 1;
+}
+
+.fev-icon-block span[uk-icon] {
+    vertical-align: middle;
+}
+
+/* UIkit übernimmt die Animationen automatisch über .uk-transition-toggle, .uk-transition-scale-up etc. */
+
+/* Responsive Icon Sizes */
+@media (max-width: 640px) {
+    .fev-icon-block span[uk-icon] {
+        font-size: 0.8em !important;
+    }
+}
