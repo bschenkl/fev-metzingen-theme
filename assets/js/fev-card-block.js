@@ -2,7 +2,7 @@
     const { registerBlockType } = wp.blocks;
     const { createElement: el, Fragment } = wp.element;
     const { InspectorControls, InnerBlocks } = wp.blockEditor;
-    const { PanelBody, TextControl, SelectControl, ToggleControl, RangeControl } = wp.components;
+    const { PanelBody, TextControl, SelectControl, ToggleControl } = wp.components;
     const { __ } = wp.i18n;
 
     // FeV Single Card Block
@@ -18,9 +18,9 @@
             isClickable: { type: 'boolean', default: false },
             openInNewTab: { type: 'boolean', default: false },
             cardStyle: { type: 'string', default: 'default' },
-            cardPadding: { type: 'number', default: 20 },
+            cardPadding: { type: 'string', default: 'large' },
             centerContent: { type: 'boolean', default: false },
-            cardBorder: { type: 'boolean', default: true },
+            cardBorder: { type: 'boolean', default: false },
             hoverAnimation: { type: 'boolean', default: true }
         },
 
@@ -36,10 +36,17 @@
                 { label: __('Muted'), value: 'muted' }
             ];
 
+            // Padding Optionen
+            const cardPaddingOptions = [
+                { label: __('Small'), value: 'small' },
+                { label: __('Large'), value: 'large' }
+            ];
+
             // Dynamische Klassen basierend auf Einstellungen - Card Container
             const cardClasses = [
                 'uk-card',
                 `uk-card-${cardStyle}`,
+                cardPadding === 'small' ? 'uk-card-small' : cardPadding === 'large' ? 'uk-card-large' : '',
                 hoverAnimation ? 'uk-card-hover' : ''
             ].filter(Boolean).join(' ');
 
@@ -81,13 +88,11 @@
                             options: cardStyleOptions, 
                             onChange: (value) => setAttributes({ cardStyle: value }) 
                         }),
-                        el(RangeControl, { 
-                            label: __('Innenabstand'), 
+                        el(SelectControl, { 
+                            label: __('Padding'), 
                             value: cardPadding, 
-                            onChange: (value) => setAttributes({ cardPadding: value }),
-                            min: 10,
-                            max: 50,
-                            step: 5
+                            options: cardPaddingOptions, 
+                            onChange: (value) => setAttributes({ cardPadding: value }) 
                         }),
                         el(ToggleControl, { 
                             label: __('Inhalt zentrieren'), 
@@ -146,6 +151,7 @@
             const cardClasses = [
                 'uk-card',
                 `uk-card-${cardStyle}`,
+                cardPadding === 'small' ? 'uk-card-small' : cardPadding === 'large' ? 'uk-card-large' : '',
                 hoverAnimation ? 'uk-card-hover' : ''
             ].filter(Boolean).join(' ');
 
@@ -157,11 +163,6 @@
 
             const cardStyles = {
                 border: cardBorder ? '1px solid #e5e5e5' : 'none'
-            };
-
-            // Body-spezifische Styles
-            const cardBodyStyles = {
-                padding: `${cardPadding}px`
             };
 
             const cardContent = el('div', { className: cardClasses, style: cardStyles, 'uk-scrollspy': 'cls: uk-animation-slide-bottom-medium; delay: 100' },

@@ -166,13 +166,16 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
         $output .= '<div class="uk-navbar-right uk-hidden@m">';
         $output .= '<a id="navbar-toggle-icon" class="uk-navbar-toggle uk-navbar-toggle-animate" uk-navbar-toggle-icon uk-toggle="target: #offcanvas-nav" href="#"></a>';
         $output .= '</div>';
-        $output .= '<div id="offcanvas-nav" uk-offcanvas="mode: push; overlay: true; flip: true;">';
-        $output .= '<div class="uk-offcanvas-bar">';
-        $output .= '<ul class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-auto-vertical">';
-        $output .= $this->render_offcanvas($elements, $max_depth);
-        $output .= '</ul>';
-        $output .= '</div>';
-        $output .= '</div>';
+        
+        // Store menu data globally for footer offcanvas
+        global $offcanvas_menu_data;
+        if (!$offcanvas_menu_data) {
+            $offcanvas_menu_data = [
+                'elements' => $elements,
+                'max_depth' => $max_depth,
+                'walker' => $this
+            ];
+        }
         return $output;
     }
 
@@ -210,7 +213,7 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
     }
 
     // Mobile: Offcanvas with accordion
-    private function render_offcanvas($elements, $max_depth, $parent_id = 0) {
+    public function render_offcanvas($elements, $max_depth, $parent_id = 0) {
         $output = '';
         foreach ($elements as $item) {
             if ((int)$item->menu_item_parent === (int)$parent_id) {
@@ -254,6 +257,24 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
 
     // The default methods are no longer needed, as everything runs via custom render methods
 }
+
+// Offcanvas in Footer (Fix for Header Animation Issues)
+function render_offcanvas_in_footer() {
+    global $offcanvas_menu_data;
+    
+    if ($offcanvas_menu_data) {
+        echo '<div id="offcanvas-nav" uk-offcanvas="mode: push; overlay: true; flip: true;" style="position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100vh !important; z-index: 1000 !important;">';
+        echo '<div class="uk-offcanvas-bar uk-height-viewport uk-padding-remove-top" style="position: absolute !important; top: 0 !important; height: 100vh !important;">';
+        echo '<ul class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-large-vertical">';
+        
+        echo $offcanvas_menu_data['walker']->render_offcanvas($offcanvas_menu_data['elements'], $offcanvas_menu_data['max_depth']);
+        
+        echo '</ul>';
+        echo '</div>';
+        echo '</div>';
+    }
+}
+add_action('wp_footer', 'render_offcanvas_in_footer');
 
 // ==========================
 // 5. Meta boxes (improved security)
@@ -656,3 +677,4 @@ function register_fev_button_block() {
     ]);
 }
 add_action('init', 'register_fev_button_block');
+
