@@ -35,6 +35,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 #hero {
     z-index: 1;
     position: relative;
+    height: 500px;
 }
 
 .hero-overlay {
@@ -82,9 +83,10 @@ header.uk-margin-top {
    ========================================================================== */
 /* Transparent Dropdown */
 .uk-dropdown {
-    background: rgba(0,0,0,0); /* oder var(--theme-overlay) */
+    background: rgba(0, 0, 0, 0); /* oder var(--theme-overlay) */
     border: none;
-    box-shadow: none;
+    border-radius: 5px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0);
     padding-top: 0;
     padding-left: 10px;
     top: 60px !important; /* Abstand zum Header */
@@ -129,6 +131,36 @@ header.uk-margin-top {
     -webkit-backdrop-filter: blur(6px);
     background-color: rgba(50, 50, 50, 0.25);
 }
+
+/* Multi-Column Dropdown für Menüs mit vielen Einträgen */
+.uk-dropdown.multi-column {
+    column-count: 2;
+    column-gap: 30px;
+    max-width: 400px;
+    padding: 0px 20px;
+}
+
+.uk-dropdown.multi-column .uk-dropdown-nav > li {
+    break-inside: avoid;
+    margin-bottom: 1px;
+}
+
+/* Vertikale Trennlinie zwischen Dropdown-Spalten */
+.uk-dropdown.multi-column::before {
+    content: "";
+    position: absolute;
+    top: 20px; /* entspricht padding-top */
+    bottom: 20px; /* entspricht padding-bottom */
+    left: 50%;
+    width: 1px;
+    background: #e0e0e0;
+    z-index: 1;
+    transform: translateX(-0.5px);
+    display: block;
+}
+
+
+
 /* ==========================================================================
    Logo Styling (Theme-specific)
    ========================================================================== */

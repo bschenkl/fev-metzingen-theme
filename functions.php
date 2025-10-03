@@ -198,7 +198,15 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
                 $attributes = !empty($item->url) ? ' href="' . esc_url($item->url) . '"' : '';
                 if ($has_children) {
                     $output .= '<a' . $attributes . ' aria-haspopup="true" aria-expanded="false">' . esc_html($item->title) . '<span uk-drop-parent-icon class="uk-dropnav-toggle"></span></a>';
-                    $output .= '<div class="uk-dropdown uk-margin-remove" id="dropnav-' . $item->ID . '" hidden>';
+                    // Zähle die direkten Kinder
+                    $child_count = 0;
+                    foreach ($elements as $child) {
+                        if ((int)$child->menu_item_parent === (int)$item->ID) {
+                            $child_count++;
+                        }
+                    }
+                    $multi_column_class = ($child_count >= 4) ? 'multi-column' : '';
+                    $output .= '<div class="uk-dropdown ' . $multi_column_class . ' uk-margin-remove" id="dropnav-' . $item->ID . '" hidden uk-dropdown="pos:bottom-justify">';
                     $output .= '<ul class="uk-nav uk-dropdown-nav">';
                     $output .= $this->render_dropnav($elements, $max_depth, $item->ID);
                     $output .= '</ul>';
