@@ -263,8 +263,8 @@ function render_offcanvas_in_footer() {
     global $offcanvas_menu_data;
     
     if ($offcanvas_menu_data) {
-        echo '<div id="offcanvas-nav" uk-offcanvas="mode: push; overlay: true; flip: true;" style="position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100vh !important; z-index: 1000 !important;">';
-        echo '<div class="uk-offcanvas-bar uk-height-viewport uk-padding-remove-top" style="position: absolute !important; top: 0 !important; height: 100vh !important;">';
+        echo '<div id="offcanvas-nav" uk-offcanvas="mode: slide; overlay: true; flip: true;" style="position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100vh !important;">';
+        echo '<div class="uk-offcanvas-bar uk-height-viewport" style="position: absolute !important; top: 0 !important; height: 100vh !important;">';
         echo '<ul class="uk-nav uk-nav-primary uk-nav-offcanvas uk-margin-large-vertical">';
         
         echo $offcanvas_menu_data['walker']->render_offcanvas($offcanvas_menu_data['elements'], $offcanvas_menu_data['max_depth']);

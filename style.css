@@ -3,7 +3,7 @@ Theme Name: FeV Metzingen Theme
 Theme URI: https://example.com/fev-metzingen
 Author: Benjamin Schenkl
 Description: A modular WordPress theme based on UIkit. Ulkit classes can be used directly in the block editor for custom layouts. You can find the documentation here: https://getuikit.com/docs
-Version: 1.2.5
+Version: 1.3.1
 Text Domain: fev-metzingen
 Requires at least: 6.0
 Tested up to: 6.6
@@ -123,8 +123,11 @@ header.uk-margin-top {
     transition: transform 0.3s cubic-bezier(.4,0,.2,1);
     transform: rotate(180deg);
 }
-.uk-drop-parent-icon-offcanvas {
-    color: white !important;
+
+.uk-offcanvas-bar {
+    backdrop-filter: blur(4px); 
+    -webkit-backdrop-filter: blur(4px);
+    background-color: rgba(128, 128, 128, 0.2);
 }
 /* ==========================================================================
    Logo Styling (Theme-specific)
