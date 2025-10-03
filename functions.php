@@ -205,7 +205,7 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
                             $child_count++;
                         }
                     }
-                    $multi_column_class = ($child_count >= 4) ? 'multi-column' : '';
+                    $multi_column_class = ($child_count > 4) ? 'multi-column' : '';
                     $output .= '<div class="uk-dropdown ' . $multi_column_class . ' uk-margin-remove" id="dropnav-' . $item->ID . '" hidden uk-dropdown="pos:bottom-justify">';
                     $output .= '<ul class="uk-nav uk-dropdown-nav">';
                     $output .= $this->render_dropnav($elements, $max_depth, $item->ID);
