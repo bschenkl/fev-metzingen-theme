@@ -126,7 +126,7 @@ header.uk-margin-top {
     transform: rotate(180deg);
 }
 
-.uk-nav-offcanvas > li.uk-nav-item > a,
+li.uk-nav-item > a,
 .uk-nav-offcanvas .uk-nav-sub > li > a {
     text-shadow: #000000 1px 1px 15px;
 }
