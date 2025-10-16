@@ -133,24 +133,29 @@ header.uk-margin-top {
     color: var(--theme-nav-default) !important;
 }
 
-/* Offcanvas Dropdown Toggle Button */
-.uk-offcanvas-dropdown-toggle {
-    font-size: 16px;
-    padding: 10px 0;
-}
-
-.uk-offcanvas-dropdown-toggle .uk-offcanvas-menu-text {
-    text-shadow: #000000 1px 1px 15px;
+/* Offcanvas Navigation Parent Button - styled like normal menu items */
+.uk-nav-parent-icon-offcanvas {
+    background: none;
+    border: none;
+    padding: 5px 0;
+    margin: 0;
+    cursor: pointer;
     color: inherit;
+    font-family: inherit;
+    font-size: 1.5rem;
+    line-height: 1.5;
 }
 
-/* Only animate the icon, not the text */
-.uk-offcanvas-dropdown-toggle .uk-dropnav-toggle-animate {
+.uk-nav-parent-icon-offcanvas > span:first-child {
+    text-shadow: #000000 1px 1px 15px;
+}
+
+.uk-nav-parent-icon-offcanvas .uk-drop-parent-icon-offcanvas {
     transition: transform 0.3s cubic-bezier(.4,0,.2,1);
     transform: rotate(0deg);
 }
 
-.uk-offcanvas-dropdown-toggle[aria-expanded="true"] .uk-dropnav-toggle-animate {
+.uk-nav-parent-icon-offcanvas[aria-expanded="true"] .uk-drop-parent-icon-offcanvas {
     transform: rotate(180deg);
 }
 

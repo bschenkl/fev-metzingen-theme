@@ -235,9 +235,9 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
                 $output .= '<li' . $class_attr . '>';
                 $attributes = !empty($item->url) ? ' href="' . esc_url($item->url) . '"' : '';
                 if ($has_children) {
-                    $output .= '<button class="uk-offcanvas-dropdown-toggle" type="button" aria-label="' . esc_attr($item->title) . '" aria-expanded="false" uk-toggle="target: #offcanvas-sub-' . $item->ID . '" style="background:none;border:none;padding:0;cursor:pointer;color:inherit;width:100%;text-align:left;display:flex;align-items:center;justify-content:space-between;">';
-                    $output .= '<span class="uk-offcanvas-menu-text">' . esc_html($item->title) . '</span>';
-                    $output .= '<span uk-drop-parent-icon class="uk-drop-parent-icon-offcanvas uk-dropnav-toggle-animate"></span>';
+                    $output .= '<button class="uk-width-1-1 uk-flex uk-flex-between uk-flex-middle uk-text-left uk-nav-parent-icon-offcanvas" type="button" aria-label="' . esc_attr($item->title) . '" aria-expanded="false" uk-toggle="target: #offcanvas-sub-' . $item->ID . '">';
+                    $output .= '<span>' . esc_html($item->title) . '</span>';
+                    $output .= '<span uk-drop-parent-icon class="uk-drop-parent-icon-offcanvas"></span>';
                     $output .= '</button>';
                     $output .= '<ul class="uk-nav-sub" id="offcanvas-sub-' . $item->ID . '" hidden>';
                     $output .= $this->render_offcanvas($elements, $max_depth, $item->ID);
