@@ -16,9 +16,9 @@ if (!$hero_title) {
 ?>
 <section id="hero" class="uk-position-relative uk-background-cover uk-background-center-center" <?php echo $style; ?>>
     <div class="uk-position-cover hero-overlay uk-flex uk-flex-center uk-flex-middle">
-        <div class="uk-text-center uk-light uk-margin-xlarge-top uk-margin-medium-top@s uk-animation-slide-bottom-medium">
-            <h1 class="uk-heading-medium uk-text-uppercase uk-text-bold"><?php echo esc_html($hero_title); ?></h1>
-            <p class="uk-text-lead" style="color: white;"><?php echo esc_html($hero_subtitle); ?></p>
+        <div class="uk-container uk-container-small uk-text-center uk-light uk-margin-xlarge-top uk-margin-medium-top@s uk-animation-slide-bottom-medium">
+            <h1 class="uk-heading-medium uk-text-uppercase uk-text-bold uk-text-break"><?php echo esc_html($hero_title); ?></h1>
+            <p class="uk-text-lead uk-text-break" style="color: white;"><?php echo esc_html($hero_subtitle); ?></p>
         </div>
     </div>
 </section>

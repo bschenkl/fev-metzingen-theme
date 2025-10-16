@@ -42,6 +42,14 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
     background-color: var(--theme-overlay);
 }
 
+/* Hero Title - Force word wrap with high specificity */
+#hero h1.uk-heading-medium {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+}
+
 /* ==========================================================================
    Header Navigation (UIKit Override - specific positioning)
    ========================================================================== */
