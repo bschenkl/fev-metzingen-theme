@@ -42,12 +42,15 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
     background-color: var(--theme-overlay);
 }
 
-/* Hero Title - Force word wrap with high specificity */
+/* Hero Title - Force word wrap with high specificity and hyphenation */
 #hero h1.uk-heading-medium {
     word-wrap: break-word !important;
     overflow-wrap: break-word !important;
-    word-break: break-word !important;
+    word-break: normal !important;
     white-space: normal !important;
+    hyphens: auto !important;
+    -webkit-hyphens: auto !important;
+    -ms-hyphens: auto !important;
 }
 
 /* ==========================================================================
