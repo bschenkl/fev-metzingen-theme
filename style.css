@@ -3,7 +3,7 @@ Theme Name: FeV Metzingen Theme
 Theme URI: https://example.com/fev-metzingen
 Author: Benjamin Schenkl
 Description: Ein modulares WordPress-Theme, das auf UIkit basiert. UIkit-Klassen können direkt im Block-Editor für benutzerdefinierte Layouts verwendet werden. Die Dokumentation finden Sie hier: <a href="https://getuikit.com/docs">UIkit-Dokumentation</a>.<br> Es gibt einige vordefinierte Block-Styles, die im Block-Editor unter "Stile" ausgewählt werden können. Diese sind speziell für dieses Theme angepasst und haben immer FeV im Titel. Wird also ein Block benötigt, erst schauen, ob es diesen in FeV styles gibt. Aktuell gibt es folgende Stile: <ul><li>FeV Card (für Gruppen- und Spaltenblöcke)</li><li>FeV Card Icon (für Gruppen- und Spaltenblöcke)</li><li>FeV Button (für Buttons)</li><li>FeV Table</li></ul> 
-Version: 1.3.4
+Version: 1.3.5
 Text Domain: fev-metzingen
 Requires at least: 6.0
 Tested up to: 6.6
@@ -132,8 +132,25 @@ header.uk-margin-top {
 #navbar-toggle-icon:hover {
     color: var(--theme-nav-default) !important;
 }
-.uk-dropnav-toggle-animate {
+
+/* Offcanvas Dropdown Toggle Button */
+.uk-offcanvas-dropdown-toggle {
+    font-size: 16px;
+    padding: 10px 0;
+}
+
+.uk-offcanvas-dropdown-toggle .uk-offcanvas-menu-text {
+    text-shadow: #000000 1px 1px 15px;
+    color: inherit;
+}
+
+/* Only animate the icon, not the text */
+.uk-offcanvas-dropdown-toggle .uk-dropnav-toggle-animate {
     transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    transform: rotate(0deg);
+}
+
+.uk-offcanvas-dropdown-toggle[aria-expanded="true"] .uk-dropnav-toggle-animate {
     transform: rotate(180deg);
 }
 
