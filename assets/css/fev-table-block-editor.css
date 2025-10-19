@@ -262,7 +262,8 @@
     background: white;
     min-height: 60px;
     display: block;
-    width: 100%;
+    width: 90%;
+    height: 80%;
 }
 
 .table-cell-editor:last-child {

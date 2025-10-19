@@ -31,7 +31,7 @@
                         })
                     )
                 ),
-                el('div', { className: `fev-section-block fev-section-${background}` , style: { width: '100vw', marginLeft: '50%', transform: 'translateX(-50%)', padding: '40px 0' }, 'uk-scrollspy': 'cls: uk-animation-slide-left-medium' },
+                el('div', { className: `fev-section-block fev-section-${background}` , style: { width: '120%', marginLeft: '0%', transform: 'translateX(-50%)', padding: '40px 20px' }, 'uk-scrollspy': 'cls: uk-animation-slide-left-medium' },
                     el('div', { className: 'uk-container' },
                         el(InnerBlocks)
                     )

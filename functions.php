@@ -228,9 +228,19 @@ class Walker_Nav_Menu_Uikit extends Walker_Nav_Menu {
                 $has_children = $this->has_children($elements, $item->ID);
                 $classes = empty($item->classes) ? [] : (array) $item->classes;
                 $class_names = array('uk-nav-item');
-                if (in_array('current-menu-item', $classes) || in_array('current-menu-ancestor', $classes) || in_array('current-menu-parent', $classes)) {
-                    $class_names[] = 'uk-active';
+                
+                // For items with children (dropdowns), only mark active if ancestor/parent
+                // For items without children, also mark active if it's the current item
+                if ($has_children) {
+                    if (in_array('current-menu-ancestor', $classes) || in_array('current-menu-parent', $classes)) {
+                        $class_names[] = 'uk-active';
+                    }
+                } else {
+                    if (in_array('current-menu-item', $classes) || in_array('current-menu-ancestor', $classes) || in_array('current-menu-parent', $classes)) {
+                        $class_names[] = 'uk-active';
+                    }
                 }
+                
                 $class_attr = $class_names ? ' class="' . esc_attr(join(' ', $class_names)) . '"' : '';
                 $output .= '<li' . $class_attr . '>';
                 $attributes = !empty($item->url) ? ' href="' . esc_url($item->url) . '"' : '';
